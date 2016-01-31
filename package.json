@@ -1,0 +1,19 @@
+{
+  "name": "personal-web",
+  "version": "0.0.1",
+  "description": "Personal site",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bense4ger/bense4ger.github.io.git"
+  },
+  "author": "Ben Seager",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bense4ger/bense4ger.github.io/issues"
+  },
+  "homepage": "https://github.com/bense4ger/bense4ger.github.io#readme"
+}
