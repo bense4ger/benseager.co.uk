@@ -15,5 +15,21 @@
   "bugs": {
     "url": "https://github.com/bense4ger/bense4ger.github.io/issues"
   },
-  "homepage": "https://github.com/bense4ger/bense4ger.github.io#readme"
+  "homepage": "https://github.com/bense4ger/bense4ger.github.io#readme",
+  "devDependencies": {
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
+    "gulp": "^3.9.0",
+    "gulp-markdown-to-json": "^0.2.1",
+    "hbsfy": "^2.4.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "backbone": "^1.2.3",
+    "handlebars": "^4.0.5",
+    "jquery": "^2.2.0",
+    "underscore": "^1.8.3"
+  }
 }
