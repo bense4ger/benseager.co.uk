@@ -8,21 +8,17 @@ var Backbone = require('backbone'),
 var Router = Backbone.Router.extend({
     routes:{
         '' : 'index',
-        ':id' : 'fullPost',
         'services' : 'services',
-        'contact' : 'contact'
+        'contact' : 'contact',
+        'post/:id' : 'fullPost'
     },
 
-    /*initialize: function (opts) {
-
-    },*/
-
     index: function () {
-        alert();
+
     },
 
     fullPost: function (id) {
-        alert(id);
+
     },
 
     services: function () {
@@ -30,7 +26,7 @@ var Router = Backbone.Router.extend({
     },
 
     contact: function () {
-        var view = new ContactView(this.el);
+        var view = new ContactView();
         view.render();
     }
 });

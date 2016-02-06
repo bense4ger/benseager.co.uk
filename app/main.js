@@ -5,11 +5,6 @@ var $ = require('jquery'),
 
 //Document Ready type things
 $(document).ready(function (){
-    var router = new Router({
-        el: $('#content')
-    });
-    Backbone.history.start({
-        pushState: true,
-        root: '/'
-    });
+    var router = new Router();
+    Backbone.history.start();
 });

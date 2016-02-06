@@ -9,9 +9,35 @@ h2{
   font-size: $font-xl;
   color: $font-dark;
 }
+h3{
+  color:$font-dark;
+}
 h4{
   font-size: $font-m;
   color: $font-dark;
+}
+p{
+  color:$font-dark;
+  text-align: justify;
+  a{
+    color:$font-dark;
+    font-weight: 700;
+    text-decoration: none;
+    &:hover{
+      color:$font-dark2;
+      transition: 300ms ease;
+    }
+    &:active{
+      color:$primary-0;
+      transition: 300ms ease;
+    }
+    &:visited{
+      color:$font-dark;
+    }
+  }
+}
+.strong{
+  font-weight: 700;
 }
 div.main{
   overflow:auto;

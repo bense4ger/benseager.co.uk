@@ -6,13 +6,8 @@ var $ = require('jquery'),
 
 //Document Ready type things
 $(document).ready(function (){
-    var router = new Router({
-        el: $('#content')
-    });
-    Backbone.history.start({
-        pushState: true,
-        root: '/'
-    });
+    var router = new Router();
+    Backbone.history.start();
 });
 
 },{"./router":2,"backbone":6,"jquery":51}],2:[function(require,module,exports){
@@ -26,21 +21,17 @@ var Backbone = require('backbone'),
 var Router = Backbone.Router.extend({
     routes:{
         '' : 'index',
-        ':id' : 'fullPost',
         'services' : 'services',
-        'contact' : 'contact'
+        'contact' : 'contact',
+        'post/:id' : 'fullPost'
     },
 
-    /*initialize: function (opts) {
-
-    },*/
-
     index: function () {
-        alert();
+
     },
 
     fullPost: function (id) {
-        alert(id);
+
     },
 
     services: function () {
@@ -48,7 +39,7 @@ var Router = Backbone.Router.extend({
     },
 
     contact: function () {
-        var view = new ContactView(this.el);
+        var view = new ContactView();
         view.render();
     }
 });
@@ -58,7 +49,7 @@ module.exports = Router;
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<h2>Hello, world</h2>";
+    return "<div class=\"small-12 medium-12 large-12 columns end\">\n    <h3>Say Hello</h3>\n    <div class=\"row\">\n        <div class=\"small-8 medium-8 large-8 columns end\">\n            <p>Feel like getting in touch?</p>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"small-8 medium-8 large-8 columns end\">\n            <p>Drop an email to <span class=\"strong\">hello@benseager.co.uk</span></p>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"small-8 medium-8 large-8 columns end\">\n            <p>Follow me on <a href=\"https://twitter.com/digsb\" target=\"_blank\">Twitter</a> or <a href=\"https://plus.google.com/u/0/+BenSeager_V1\" target=\"_blank\">Google Plus</a></p>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"small-8 medium-8 large-8 columns end\">\n            <p>Or if you fancy chat, then come and say hi at a Norwich City match. I'm a season ticket holder\n                in the Lower Barclay and try to get to as many away games as I can.</p>\n        </div>\n    </div>\n</div>";
 },"useData":true});
 
 },{"hbsfy/runtime":50}],4:[function(require,module,exports){
@@ -66,19 +57,26 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
  * Created by benseager on 06/02/2016.
  */
 'use strict';
-var Backbone = require('backbone'),
+var $ = require('jquery'),
+    Backbone = require('backbone'),
     Handlebars = require('handlebars'),
     template = require('./contact-view.hbs');
 
 var ContactView = Backbone.View.extend({
+    initialize: function (attrs) {
+        this.$el = $('#content');
+    },
+
     render: function () {
         var html = template();
         this.$el.html(html);
+
+        return this;
     }
 });
 
 module.exports = ContactView;
-},{"./contact-view.hbs":3,"backbone":6,"handlebars":37}],5:[function(require,module,exports){
+},{"./contact-view.hbs":3,"backbone":6,"handlebars":37,"jquery":51}],5:[function(require,module,exports){
 (function (process,__filename){
 /** vim: et:ts=4:sw=4:sts=4
  * @license amdefine 1.0.0 Copyright (c) 2011-2015, The Dojo Foundation All Rights Reserved.
