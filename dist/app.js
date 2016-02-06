@@ -9,6 +9,10 @@ var $ = require('jquery'),
 $(document).ready(function () {
     var router = new Router();
     Backbone.history.start();
+
+    $.get('package.json', function (data) {
+        console.log(data);
+    });
 });
 
 },{"./router":2,"backbone":8,"jquery":53}],2:[function(require,module,exports){
@@ -83,7 +87,7 @@ module.exports = ContactView;
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div class=\"small-12 medium-12 large-12 columns end\">\n    <h3>Hi!</h3>\n</div>\n<div class=\"small-8 medium-8 large-8 columns\">\n    <p>Thanks for stopping by.</p>\n    <p>I'm a software developer based in Norwich. Tech-stack wise I'm mostly interested in ASP.net and Node.js. I'm\n        more of a server-side guy but I like to offend designers by getting my hands dirty with web dev\n        occasionally.</p>\n</div>\n<div id=\"t1\" class=\"large-4 show-on-large-only columns\">\n\n</div>\n<div class=\"small-12 medium-12 large-12 columns end\">\n    <h3>Recent Posts</h3>\n</div>\n<div id=\"posts\" class=\"small-8 medium-8 large-8 columns\">\n\n</div>\n<div id=\"t2\" class=\"large-4 show-on-large-only columns\">\n\n</div>";
+    return "<div class=\"small-12 medium-12 large-12 columns\">\n    <h3>Hi!</h3>\n</div>\n<div class=\"small-8 medium-8 large-8 columns end\">\n    <p>Thanks for stopping by.</p>\n    <p>I'm a software developer based in Norwich. Tech-stack wise I'm mostly interested in ASP.net and Node.js. I'm\n        more of a server-side guy but I like to offend designers by getting my hands dirty with web dev\n        occasionally.</p>\n</div>\n<div class=\"small-12 medium-12 large-12 columns\">\n    <h3>Recent Posts</h3>\n</div>\n<div id=\"posts\" class=\"small-8 medium-8 large-8 columns\">\n\n</div>\n<div id=\"tweets\" class=\"large-4 show-on-large-only columns\">\n\n</div>";
 },"useData":true});
 
 },{"hbsfy/runtime":52}],6:[function(require,module,exports){

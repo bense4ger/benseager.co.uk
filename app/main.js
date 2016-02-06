@@ -4,7 +4,9 @@ var $ = require('jquery'),
     Router = require('./router');
 
 //Document Ready type things
-$(document).ready(function (){
+$(document).ready(() => {
     var router = new Router();
     Backbone.history.start();
+
+    $.get('package.json', (data) => { console.log(data); });
 });

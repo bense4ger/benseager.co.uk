@@ -10,7 +10,7 @@ h2{
   color: $font-dark;
 }
 h3{
-  margin-left: 0;
+  margin-bottom:5px;
   color:$font-dark;
 }
 h4{
@@ -82,7 +82,7 @@ div#menu{
         @include border-radius(2, 2, 2, 2);
         i {
           color: $primary-0;
-          width:3em;
+          width:3.15em;
           margin-top: 5px;
         }
         &:hover{
