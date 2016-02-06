@@ -15,7 +15,7 @@ hbsfy.configure({
 
 gulp.task('build-app', () => {
     return browserify('./app/main.js')
-    .transform(babelify, { presets: ['es2015'] })
+    //.transform(babelify, { presets: ['es2015'] })
     .transform(hbsfy)
     .bundle()
     .pipe(source('app.js'))
@@ -44,6 +44,9 @@ gulp.task('build', ['build-app', 'create-json', 'sass'], () => {
     gulp.watch('./app/**/*.js', ['build-app']);
     gulp.watch('./content/**/*.md', ['create-json']);
     gulp.watch(('./scss/**/*.scss'), ['sass']);
+
+
+
 });
 
 gulp.task('default', ['build']);

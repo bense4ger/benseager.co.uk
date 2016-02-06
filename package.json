@@ -25,6 +25,7 @@
     "gulp-markdown-to-json": "^0.2.1",
     "gulp-sass": "^2.2.0",
     "hbsfy": "^2.4.1",
+    "pushstate-server": "^1.8.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"
