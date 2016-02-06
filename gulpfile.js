@@ -2,6 +2,8 @@
 
 var gulp = require('gulp'),
     markdown = require('gulp-markdown-to-json'),
+    sass = require('gulp-sass'),
+    concat = require('gulp-concat'),
     browserify = require('browserify'),
     babelify = require('babelify'),
     hbsfy = require('hbsfy'),
@@ -18,6 +20,14 @@ gulp.task('build-app', () => {
     .bundle()
     .pipe(source('app.js'))
     .pipe(gulp.dest('dist'));
+});
+
+gulp.task('sass', () => {
+    return gulp.src('./scss/**/*.scss')
+        .pipe(sass({ outputStyle : 'compressed' })
+            .on('error', sass.logError))
+        .pipe(concat('site.min.css'))
+        .pipe(gulp.dest('./dist/css/'));
 });
 
 gulp.task('create-json', () => {
