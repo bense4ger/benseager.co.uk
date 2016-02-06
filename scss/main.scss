@@ -70,3 +70,10 @@ div#content{
   max-height: 600px;
   overflow-y: scroll;
 }
+div#foot{
+  p{
+    font-size: $font-s;
+    text-align: right;
+    color:$primary-0;
+  }
+}
