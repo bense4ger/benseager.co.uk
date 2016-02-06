@@ -13,7 +13,7 @@ var ContactView = Backbone.View.extend({
     },
 
     render: function () {
-        var html = template();
+        let html = template();
         this.$el.html(html);
 
         return this;

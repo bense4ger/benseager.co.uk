@@ -3,7 +3,8 @@
  */
 'use strict';
 var Backbone = require('backbone'),
-    ContactView = require('./views/contact-view');
+    IndexView = require('./views/index/index-view'),
+    ContactView = require('./views/contact/contact-view');
 
 var Router = Backbone.Router.extend({
     routes:{
@@ -14,7 +15,8 @@ var Router = Backbone.Router.extend({
     },
 
     index: function () {
-
+        let view = new IndexView();
+        view.render();
     },
 
     fullPost: function (id) {
@@ -26,7 +28,7 @@ var Router = Backbone.Router.extend({
     },
 
     contact: function () {
-        var view = new ContactView();
+        let view = new ContactView();
         view.render();
     }
 });

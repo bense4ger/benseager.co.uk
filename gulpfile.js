@@ -15,7 +15,7 @@ hbsfy.configure({
 
 gulp.task('build-app', () => {
     return browserify('./app/main.js')
-    //.transform(babelify, { presets: ['es2015'] })
+    .transform(babelify, { presets: ['es2015'] })
     .transform(hbsfy)
     .bundle()
     .pipe(source('app.js'))
