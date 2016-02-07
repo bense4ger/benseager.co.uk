@@ -13,6 +13,12 @@
   box-shadow: $offset-x + px $offset-y + px $blur + px $spread + px $colour;
 }
 
+@mixin remove-shadow(){
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
 @mixin border-radius($tl, $tr, $br, $bl){
   -webkit-border-top-left-radius: $tl + px;
   -webkit-border-top-right-radius: $tr + px;
@@ -26,4 +32,9 @@
   border-top-right-radius: $tr + px;
   border-bottom-right-radius: $br + px;
   border-bottom-left-radius: $bl +px;
+}
+
+@mixin transition($prop){
+  transition: $prop 300ms ease;
+  -webkit-transition: $prop 300ms ease;
 }

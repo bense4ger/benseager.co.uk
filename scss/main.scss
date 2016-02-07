@@ -85,10 +85,11 @@ div#menu{
           color: $primary-0;
           width:3.15em;
           margin-top: 5px;
+          @include transition(background-color);
         }
         &:hover{
           background-color: $secondary-2-2;
-          transition: 300ms ease;
+          @include transition(background-color);
         }
       }
     }

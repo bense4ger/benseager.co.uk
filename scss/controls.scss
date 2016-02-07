@@ -34,6 +34,15 @@ form{
       color:$primary-0;
       @include border-radius(2, 2, 2, 2);
       @include box-shadow(0, 10, 10, -10, $secondary-2-4);
+      @include transition(background-color);
+      &:hover{
+        background-color: $secondary-2-2;
+        @include transition(background-color);
+      }
+      &:active{
+        @include remove-shadow();
+        outline: none;
+      }
     }
   }
   textarea{
