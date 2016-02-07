@@ -1,0 +1,42 @@
+@import "colours";
+@import "borders";
+@import "fonts";
+
+@mixin text-input(){
+  width:100%;
+  @include border-radius(2, 2, 2, 2);
+  color:$font-dark;
+  background-color: $primary-0;
+  border:none;
+  &:focus{
+    outline: none;
+  }
+  .invalid{
+    @include border(1, 1, 1, 1, red);
+  }
+}
+
+form{
+  label{
+    font-size: $font-m;
+    color:$font-dark;
+  }
+  input{
+    &[type="text"]{
+      @include text-input();
+    }
+    &[type="submit"]{
+      width:50%;
+      float:right;
+      height:$font-xl;
+      border:none;
+      background-color: $secondary-2-4;
+      color:$primary-0;
+      @include border-radius(2, 2, 2, 2);
+      @include box-shadow(0, 10, 10, -10, $secondary-2-4);
+    }
+  }
+  textarea{
+    @include text-input();
+  }
+}

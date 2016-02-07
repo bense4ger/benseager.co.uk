@@ -1,6 +1,7 @@
 @import "fonts";
 @import "borders";
 @import "colours";
+@import "controls";
 body{
   font-family: $font-stack;
   background-color: $secondary-1-4;
@@ -102,5 +103,10 @@ div#foot{
     font-size: $font-s;
     text-align: right;
     color:$primary-0;
+  }
+}
+form{
+  div.columns{
+    margin-bottom:25px;
   }
 }

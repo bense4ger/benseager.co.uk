@@ -41,7 +41,7 @@ gulp.task('create-json', () => {
 });
 
 gulp.task('build', ['build-app', 'create-json', 'sass'], () => {
-    gulp.watch('./app/**/*.js', ['build-app']);
+    gulp.watch(['./app/**/*.js', './app/**/*.hbs'], ['build-app']);
     gulp.watch('./content/**/*.md', ['create-json']);
     gulp.watch(('./scss/**/*.scss'), ['sass']);
 

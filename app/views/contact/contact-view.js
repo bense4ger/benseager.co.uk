@@ -4,18 +4,22 @@
 'use strict';
 var $ = require('jquery'),
     Backbone = require('backbone'),
-    Handlebars = require('handlebars'),
     template = require('./contact-view.hbs');
 
 var ContactView = Backbone.View.extend({
+    el: '#content',
+
+    events:{
+        'submit #contact-form' : 'submit'
+    },
+
     initialize: function (attrs) {
-        this.$el = $('#content');
+
     },
 
     render: function () {
-        let html = template();
-        this.$el.html(html);
-
+        var html = template();
+        this.$el.append(html);
         return this;
     }
 });

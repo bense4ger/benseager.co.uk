@@ -8,5 +8,5 @@ $(document).ready(() => {
     var router = new Router();
     Backbone.history.start();
 
-    $.get('package.json', (data) => { console.log(data); });
+    //$('input[type="submit"]').click(() => { return false; });
 });
