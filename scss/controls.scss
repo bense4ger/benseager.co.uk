@@ -43,6 +43,9 @@ form{
         @include remove-shadow();
         outline: none;
       }
+      &:focus{
+        outline: none;
+      }
     }
   }
   textarea{

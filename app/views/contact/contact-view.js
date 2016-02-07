@@ -19,8 +19,23 @@ var ContactView = Backbone.View.extend({
 
     render: function () {
         var html = template();
-        this.$el.append(html);
+        this.$el.html(html);
         return this;
+    },
+
+    submit: function (e) {
+        e.preventDefault();
+        let $form = $(e.currentTarget);
+        let data = $form.serialize();
+
+        if(data._gotcha !== undefined) return;
+
+        $.ajax({
+            url: "//formspree.io/hello@benseager.co.uk",
+            method: "POST",
+            data: data,
+            dataType: "json"
+        });
     }
 });
 
