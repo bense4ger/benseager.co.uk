@@ -4,11 +4,18 @@
 'use strict';
 var $ = require('jquery'),
     Backbone = require('backbone'),
-    template = require('./index-view.hbs');
+    Handlebars = require('handlebars');
 
 var IndexView = Backbone.View.extend({
+    el: '#content',
+
+    initialize: function () {
+
+    },
+
     render: function () {
-        this.$el = $('#content');
+        let template = Handlebars.compile(require('./index-view.hbs')());
+        //this.$el = $('#content');
         let html = template();
 
         this.$el.html(html);

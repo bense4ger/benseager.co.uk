@@ -4,7 +4,7 @@
 'use strict';
 var $ = require('jquery'),
     Backbone = require('backbone'),
-    template = require('./contact-view.hbs');
+    Handlebars = require('handlebars');
 
 var ContactView = Backbone.View.extend({
     el: '#content',
@@ -18,7 +18,8 @@ var ContactView = Backbone.View.extend({
     },
 
     render: function () {
-        var html = template();
+        let template = Handlebars.compile(require('./contact-view.hbs')());
+        let html = template();
         this.$el.html(html);
         return this;
     },
