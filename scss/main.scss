@@ -2,6 +2,7 @@
 @import "borders";
 @import "colours";
 @import "controls";
+
 body{
   font-family: $font-stack;
   background-color: $secondary-1-4;
@@ -98,6 +99,17 @@ div#menu{
 div#content{
   max-height: 600px;
   overflow-y: scroll;
+  div#form-container{
+    p#thanks{
+      display:none;
+      margin:0 auto;
+    }
+    i{
+      margin-left: 45%;
+      color:$font-dark;
+      display: none;
+    }
+  }
 }
 div#foot{
   p{
@@ -109,5 +121,8 @@ div#foot{
 form{
   div.columns{
     margin-bottom:25px;
+  }
+  div.form-error{
+    display:none;
   }
 }

@@ -6,7 +6,7 @@
                 You can also find me on <a href="https://twitter.com/digsb" target="_blank">Twitter</a> and <a href="https://plus.google.com/u/0/+BenSeager_V1" target="_blank">Google Plus</a>
             </p>
         </div>
-        <div class="small-12 large-6 columns">
+        <div id="form-container" class="small-12 large-6 columns">
             <form id="contact-form">
                 <input type="hidden" name="_gotcha">
                 <div class="row">
@@ -35,10 +35,20 @@
                 </div>
                 <div class="row">
                     <div class="small-12 large-12 columns">
-                        <input type="submit" value="Send" />
+                        <input id="submit" type="submit" value="Send" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-12 large-12 columns">
+                        <div class="form-error">
+                            <p>All the fields are required</p>
+                        </div>
                     </div>
                 </div>
             </form>
+            <p id="thanks">Thanks for getting in touch - I'll reply as soon as I can.</p>
+            <i id="loading" class="fa fa-spinner fa-4x fa-pulse"></i>
+            <i id="error" class="fa fa-exclamation-triangle fa-4x"></i>
         </div>
     </div>
 </div>

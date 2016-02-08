@@ -52,7 +52,7 @@ module.exports = Router;
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div class=\"small-12 medium-12 large-12 columns end\">\n    <h3>Say Hello</h3>\n    <div class=\"row\">\n        <div class=\"small-12 large-6 columns\">\n            <p>Feel free to drop me a message using the form, or send an email to <span class=\"strong\">hello@benseager.co.uk</span>.\n                You can also find me on <a href=\"https://twitter.com/digsb\" target=\"_blank\">Twitter</a> and <a href=\"https://plus.google.com/u/0/+BenSeager_V1\" target=\"_blank\">Google Plus</a>\n            </p>\n        </div>\n        <div class=\"small-12 large-6 columns\">\n            <form id=\"contact-form\">\n                <input type=\"hidden\" name=\"_gotcha\">\n                <div class=\"row\">\n                    <div class=\"small-6 large-2 columns\">\n                        <label for=\"name\">Name</label>\n                    </div>\n                    <div class=\"small-12 large-10 columns\">\n                        <input type=\"text\" id=\"name\" name=\"name\" required=\"required\" />\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"small-6 large-2 columns\">\n                        <label for=\"email\">Email</label>\n                    </div>\n                    <div class=\"small-12 large-10 columns\">\n                        <input type=\"text\" id=\"email\" name=\"email\" required=\"required\" />\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"small-6 large-2 columns\">\n                        <label for=\"message\">Message</label>\n                    </div>\n                    <div class=\"small-12 large-10 columns end\">\n                        <textarea name=\"message\" id=\"message\" cols=\"30\" rows=\"5\"></textarea>\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"small-12 large-12 columns\">\n                        <input type=\"submit\" value=\"Send\" />\n                    </div>\n                </div>\n            </form>\n        </div>\n    </div>\n</div>";
+    return "<div class=\"small-12 medium-12 large-12 columns end\">\n    <h3>Say Hello</h3>\n    <div class=\"row\">\n        <div class=\"small-12 large-6 columns\">\n            <p>Feel free to drop me a message using the form, or send an email to <span class=\"strong\">hello@benseager.co.uk</span>.\n                You can also find me on <a href=\"https://twitter.com/digsb\" target=\"_blank\">Twitter</a> and <a href=\"https://plus.google.com/u/0/+BenSeager_V1\" target=\"_blank\">Google Plus</a>\n            </p>\n        </div>\n        <div id=\"form-container\" class=\"small-12 large-6 columns\">\n            <form id=\"contact-form\">\n                <input type=\"hidden\" name=\"_gotcha\">\n                <div class=\"row\">\n                    <div class=\"small-6 large-2 columns\">\n                        <label for=\"name\">Name</label>\n                    </div>\n                    <div class=\"small-12 large-10 columns\">\n                        <input type=\"text\" id=\"name\" name=\"name\" required=\"required\" />\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"small-6 large-2 columns\">\n                        <label for=\"email\">Email</label>\n                    </div>\n                    <div class=\"small-12 large-10 columns\">\n                        <input type=\"text\" id=\"email\" name=\"email\" required=\"required\" />\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"small-6 large-2 columns\">\n                        <label for=\"message\">Message</label>\n                    </div>\n                    <div class=\"small-12 large-10 columns end\">\n                        <textarea name=\"message\" id=\"message\" cols=\"30\" rows=\"5\"></textarea>\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"small-12 large-12 columns\">\n                        <input id=\"submit\" type=\"submit\" value=\"Send\" />\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"small-12 large-12 columns\">\n                        <div class=\"form-error\">\n                            <p>All the fields are required</p>\n                        </div>\n                    </div>\n                </div>\n            </form>\n            <p id=\"thanks\">Thanks for getting in touch - I'll reply as soon as I can.</p>\n            <i id=\"loading\" class=\"fa fa-spinner fa-4x fa-pulse\"></i>\n            <i id=\"error\" class=\"fa fa-exclamation-triangle fa-4x\"></i>\n        </div>\n    </div>\n</div>";
 },"useData":true});
 
 },{"hbsfy/runtime":52}],4:[function(require,module,exports){
@@ -88,11 +88,27 @@ var ContactView = Backbone.View.extend({
 
         if (data._gotcha !== undefined) return;
 
+        var $thanks = $('p#thanks');
+        var $loader = $('i#loading');
+        var $error = $('i#error');
+
+        $form.hide();
+        $loader.show();
+
         $.ajax({
             url: "//formspree.io/hello@benseager.co.uk",
             method: "POST",
             data: data,
-            dataType: "json"
+            dataType: "json",
+            success: function success() {
+                $loader.hide();
+                $form.trigger('reset');
+                $thanks.show();
+            },
+            error: function error() {
+                $loader.hide();
+                $error.show();
+            }
         });
     }
 });
@@ -123,7 +139,6 @@ var IndexView = Backbone.View.extend({
 
     render: function render() {
         var template = Handlebars.compile(require('./index-view.hbs')());
-        //this.$el = $('#content');
         var html = template();
 
         this.$el.html(html);

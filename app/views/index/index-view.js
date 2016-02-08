@@ -15,7 +15,6 @@ var IndexView = Backbone.View.extend({
 
     render: function () {
         let template = Handlebars.compile(require('./index-view.hbs')());
-        //this.$el = $('#content');
         let html = template();
 
         this.$el.html(html);

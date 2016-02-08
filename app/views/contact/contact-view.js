@@ -31,11 +31,27 @@ var ContactView = Backbone.View.extend({
 
         if(data._gotcha !== undefined) return;
 
+        let $thanks = $('p#thanks');
+        let $loader = $('i#loading');
+        let $error = $('i#error');
+
+        $form.hide();
+        $loader.show();
+
         $.ajax({
             url: "//formspree.io/hello@benseager.co.uk",
             method: "POST",
             data: data,
-            dataType: "json"
+            dataType: "json",
+            success: () => {
+                $loader.hide();
+                $form.trigger('reset');
+                $thanks.show();
+            },
+            error: () => {
+                $loader.hide();
+                $error.show();
+            }
         });
     }
 });
