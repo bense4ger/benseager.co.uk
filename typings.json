@@ -1,0 +1,15 @@
+{
+  "name": "bense4ger.github.io",
+  "version": false,
+  "dependencies": {},
+  "ambientDependencies": {
+    "browserify": "registry:dt/browserify#12.0.1+20160317120654",
+    "gulp": "registry:dt/gulp#3.8.0+20160316155526",
+    "gulp-sass": "registry:dt/gulp-sass#0.0.0+20160316155526",
+    "node": "registry:dt/node#4.0.0+20160412142033",
+    "orchestrator": "registry:dt/orchestrator#0.0.0+20160316155526",
+    "q": "registry:dt/q#0.0.0+20160417152954",
+    "vinyl-source-stream": "registry:dt/vinyl-source-stream#0.0.0+20160316155526",
+    "vue": "registry:dt/vue#1.0.16+20160316155526"
+  }
+}

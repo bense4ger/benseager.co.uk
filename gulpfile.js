@@ -1,52 +1,16 @@
-'use strict';
-
-var gulp = require('gulp'),
-    markdown = require('gulp-markdown-to-json'),
-    sass = require('gulp-sass'),
-    concat = require('gulp-concat'),
-    browserify = require('browserify'),
-    babelify = require('babelify'),
-    hbsfy = require('hbsfy'),
-    source = require('vinyl-source-stream');
-
-hbsfy.configure({
-    extensions: ['hbs']
-});
-
+"use strict";
+const gulp = require('gulp');
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
+const sassPath = './scss/**/*.scss';
+const libPaths = ['./lib/**/*.js', './lib/**/*.hbs'];
 gulp.task('build-app', () => {
-    return browserify('./app/main.js')
-    .transform(babelify, { presets: ['es2015'] })
-    .transform(hbsfy)
-    .bundle()
-    .pipe(source('app.js'))
-    .pipe(gulp.dest('dist'));
+    return browserify('./lib/main.js')
+        .bundle()
+        .pipe(source('app.js'))
+        .pipe(gulp.dest('./dist/scripts'));
 });
-
-gulp.task('sass', () => {
-    return gulp.src('./scss/**/*.scss')
-        .pipe(sass({ outputStyle : 'compressed' })
-            .on('error', sass.logError))
-        .pipe(concat('site.min.css'))
-        .pipe(gulp.dest('./dist/css/'));
+gulp.task('build', ['build-app'], () => {
+    gulp.watch(libPaths, ['build-app']);
 });
-
-gulp.task('create-json', () => {
-    return gulp.src('./content/**/*.md')
-        .pipe(markdown({
-            pedantic: true,
-            smartypants: true
-        }))
-        .pipe(gulp.dest('dist/content/'));
-
-});
-
-gulp.task('build', ['build-app', 'create-json', 'sass'], () => {
-    gulp.watch(['./app/**/*.js', './app/**/*.hbs'], ['build-app']);
-    gulp.watch('./content/**/*.md', ['create-json']);
-    gulp.watch(('./scss/**/*.scss'), ['sass']);
-
-
-
-});
-
-gulp.task('default', ['build']);
+gulp.task('default', ['build-app'], () => { });

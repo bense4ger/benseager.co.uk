@@ -1,0 +1,14 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "module": "commonjs",
+        "sourceMap": false,
+        "noImplicitAny": true,
+        "removeComments": true,
+        "target": "es6"
+    },
+    "exclude": [
+        "node_modules",
+        "typings"
+    ]
+}
