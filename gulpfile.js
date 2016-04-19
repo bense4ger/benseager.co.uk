@@ -1,16 +1,16 @@
 "use strict";
-const gulp = require('gulp');
-const browserify = require('browserify');
-const source = require('vinyl-source-stream');
-const sassPath = './scss/**/*.scss';
-const libPaths = ['./lib/**/*.js', './lib/**/*.hbs'];
-gulp.task('build-app', () => {
+var gulp = require('gulp');
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
+var sassPath = './scss/**/*.scss';
+var libPaths = ['./lib/**/*.js', './lib/**/*.hbs'];
+gulp.task('build-app', function () {
     return browserify('./lib/main.js')
         .bundle()
         .pipe(source('app.js'))
         .pipe(gulp.dest('./dist/scripts'));
 });
-gulp.task('build', ['build-app'], () => {
+gulp.task('build', ['build-app'], function () {
     gulp.watch(libPaths, ['build-app']);
 });
-gulp.task('default', ['build-app'], () => { });
+gulp.task('default', ['build-app'], function () { });

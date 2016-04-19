@@ -4,7 +4,7 @@ import * as browserify from 'browserify';
 import * as source from 'vinyl-source-stream';
 
 const sassPath = './scss/**/*.scss';
-const libPaths = ['./lib/**/*.js', './lib/**/*.vue'];
+const libPaths = ['./lib/**/*.js', './lib/**/*.hbs'];
 
 gulp.task('build-app', () => {
     return browserify('./lib/main.js')
