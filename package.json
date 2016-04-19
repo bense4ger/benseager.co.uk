@@ -25,6 +25,7 @@
     "browserify": "^13.0.0",
     "browserify-shim": "^3.8.12",
     "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
     "gulp-sass": "^2.2.0",
     "hbsfy": "^2.7.0",
     "vinyl-source-stream": "^1.1.0"

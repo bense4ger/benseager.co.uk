@@ -6,6 +6,7 @@
     "backbone-global": "registry:dt/backbone-global#1.0.0+20160417152450",
     "browserify": "registry:dt/browserify#12.0.1+20160317120654",
     "gulp": "registry:dt/gulp#3.8.0+20160316155526",
+    "gulp-concat": "registry:dt/gulp-concat#0.0.0+20160316155526",
     "gulp-sass": "registry:dt/gulp-sass#0.0.0+20160316155526",
     "handlebars": "registry:dt/handlebars#3.0.3+20160317120654",
     "jquery": "registry:dt/jquery#1.10.0+20160316155526",
