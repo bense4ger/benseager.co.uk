@@ -1,0 +1,33 @@
+@import 'colours.scss';
+$header-height: 150px;
+
+.spacer{
+    height: 35px;
+}
+
+div#header{
+    div.columns{
+        &:last-child{
+            height: $header-height;
+            h1{
+                line-height: $header-height;
+            }
+        }
+    }
+}
+
+div#header-image{
+    border-radius: 50%;
+    overflow: hidden;
+    width: $header-height;
+    height: $header-height;
+    border-width: 5px;
+    border-style: solid;
+    border-color: $rgba-primary-0;
+    
+    img{
+        display: block;
+        min-width: 100%;
+        min-height: 100%;
+    }
+}

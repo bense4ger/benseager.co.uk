@@ -1,0 +1,14 @@
+@import 'colours.scss';
+@import 'fonts.scss';
+body{
+    background-color: $rgba-primary-1a;
+}
+
+div{
+    h1{
+        color: $rgba-primary-0;
+        font-family: $font-stack;
+        font-weight: 700;
+    }
+}
+

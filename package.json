@@ -28,30 +28,33 @@
     "gulp-concat": "^2.6.0",
     "gulp-sass": "^2.2.0",
     "hbsfy": "^2.7.0",
+    "node-static": "^0.7.7",
     "vinyl-source-stream": "^1.1.0"
   },
   "browser": {
     "jquery": "https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js",
     "underscore": "dist/scripts/vendor/underscore-min.js",
     "backbone": "dist/scripts/vendor/backbone-min.js",
-    "handlebars": "dist/scripts/vendor/handlebars/handlebars.min-v4.0.5.js"
+    "handlebars": "dist/scripts/vendor/handlebars/handlebars.min-v4.0.5.js",
+    "promise": "https://www.promisejs.org/polyfills/promise-6.1.0.js"
   },
   "browserify-shim": {
     "jquery": "global:$",
     "underscore": "global:_",
     "backbone": "global:Backbone",
-    "handlebars": "global:Handlebars"
+    "handlebars": "global:Handlebars",
+    "promise": "global:Promise"
   },
   "browserify": {
     "transform": [
       [
-        "browserify-shim",
         "hbsfy",
         {
           "extensions": [
             "hbs"
           ]
         },
+        "browserify-shim",
         "babelify",
         {
           "presets": [
