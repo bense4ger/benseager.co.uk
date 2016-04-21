@@ -1,5 +1,7 @@
 @import 'colours.scss';
 @import 'fonts.scss';
+@import 'transitions.scss';
+@import 'borders.scss';
 body{
     background-color: $rgba-primary-1a;
 }
@@ -13,11 +15,34 @@ div{
 }
 
 ul#navigation{
+    background-color: $rgba-primary-0;
+    @include border-radius(2,2,2,2);
+    @include box-shadow(0, 10, 10, -10, $rgba-primary-0);
     li{
+        @include transition(background-color);
+        &:hover{
+            background-color: $rgba-primary-1;
+            @include transition(background-color);
+            a{
+                color: $rgba-primary-0;
+                @include transition(color);
+            }
+        }
         a{
+            @include transition(color);
+            color: $rgba-primary-1;
             font-family: $font-stack;
             font-size: 1.5em;
         }
     }
 }
 
+section#content{
+    margin-top:2em;
+    div{
+        &:first-child{
+            @include border(5,5,5,5,$rgba-primary-0);
+            @include border-radius(2,2,2,2);
+        }
+    }
+}

@@ -1,0 +1,5 @@
+@mixin transition($prop, $time:"300ms"){
+    transition: $prop unquote($time) ease;
+    -webkit-transition: $prop unquote($time) ease;
+    -moz-transition: $prop unquote($time) ease
+}
