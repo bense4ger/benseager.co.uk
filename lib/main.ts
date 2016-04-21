@@ -4,9 +4,15 @@ import { Initialiser } from './initialiser';
 //Initialise the app
 $('document').ready(() => {
     let i = new Initialiser();
-    i.init().then((result) => {
+    i.initLayout().then((result) => {
         if(result === true){
-            i.renderLayout();
+            i.renderLayout().then((result) => {
+                i.initRouter().then((result) => {
+                    Backbone.history.start();
+                });
+            }).catch((err) => {
+                console.log(err);
+            });            
         }
     }).catch((err) => {
         console.log(err);

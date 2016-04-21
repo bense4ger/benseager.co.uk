@@ -7,10 +7,11 @@ import { LayoutView } from './views/layout';
 export class Initialiser{
     private _menuJSONPath: string = './menu.json';
     private _view: LayoutView;
+    private _router: Routing.Router;
     
     constructor(){}
     
-    public init(): Promise<boolean>{
+    public initLayout(): Promise<boolean>{
         let initPromise = new Promise((resolve, reject) => {
             $.ajax({
                 url: this._menuJSONPath,
@@ -41,7 +42,36 @@ export class Initialiser{
         return initPromise;
     }
     
-    public renderLayout():void{
-        this._view.render();
+    public renderLayout(): Promise<boolean> {
+        let renderPromise = new Promise((resolve, reject) => {
+            try{
+                this._view.render();
+                resolve(true);
+            }
+            catch(err){
+                reject(err);
+            }
+        });
+        return renderPromise;
+    }
+    
+    public initRouter(): Promise<boolean> {
+        let routerPromise = new Promise((resolve, reject) => {
+            $.ajax({
+                url: this._menuJSONPath,
+                method: 'GET',
+                contentType: 'application/json'
+            })
+            .then((data) => {
+                this._router = new Routing.Router();
+                Routing.bootstrapMenuRoutes(this._router, data);
+                
+                resolve(true);
+            })
+            .fail(() => {
+                resolve(false);
+            });
+        });
+        return routerPromise;
     }
 }

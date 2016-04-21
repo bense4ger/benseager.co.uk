@@ -1,5 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
+var Routing = require('./routing/router');
 var menu_model_1 = require('./models/menu-model');
 var layout_model_1 = require('./models/layout-model');
 var layout_1 = require('./views/layout');
@@ -7,7 +8,7 @@ var Initialiser = (function () {
     function Initialiser() {
         this._menuJSONPath = './menu.json';
     }
-    Initialiser.prototype.init = function () {
+    Initialiser.prototype.initLayout = function () {
         var _this = this;
         var initPromise = new Promise(function (resolve, reject) {
             $.ajax({
@@ -35,20 +36,55 @@ var Initialiser = (function () {
         return initPromise;
     };
     Initialiser.prototype.renderLayout = function () {
-        this._view.render();
+        var _this = this;
+        var renderPromise = new Promise(function (resolve, reject) {
+            try {
+                _this._view.render();
+                resolve(true);
+            }
+            catch (err) {
+                reject(err);
+            }
+        });
+        return renderPromise;
+    };
+    Initialiser.prototype.initRouter = function () {
+        var _this = this;
+        var routerPromise = new Promise(function (resolve, reject) {
+            $.ajax({
+                url: _this._menuJSONPath,
+                method: 'GET',
+                contentType: 'application/json'
+            })
+                .then(function (data) {
+                _this._router = new Routing.Router();
+                Routing.bootstrapMenuRoutes(_this._router, data);
+                resolve(true);
+            })
+                .fail(function () {
+                resolve(false);
+            });
+        });
+        return routerPromise;
     };
     return Initialiser;
 }());
 exports.Initialiser = Initialiser;
 
-},{"./models/layout-model":3,"./models/menu-model":4,"./views/layout":6}],2:[function(require,module,exports){
+},{"./models/layout-model":3,"./models/menu-model":4,"./routing/router":5,"./views/layout":8}],2:[function(require,module,exports){
 "use strict";
 var initialiser_1 = require('./initialiser');
 $('document').ready(function () {
     var i = new initialiser_1.Initialiser();
-    i.init().then(function (result) {
+    i.initLayout().then(function (result) {
         if (result === true) {
-            i.renderLayout();
+            i.renderLayout().then(function (result) {
+                i.initRouter().then(function (result) {
+                    Backbone.history.start();
+                });
+            }).catch(function (err) {
+                console.log(err);
+            });
         }
     }).catch(function (err) {
         console.log(err);
@@ -118,12 +154,42 @@ var MenuModel = (function (_super) {
 exports.MenuModel = MenuModel;
 
 },{}],5:[function(require,module,exports){
+"use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var reflector_1 = require('../utils/reflector');
+var Router = (function (_super) {
+    __extends(Router, _super);
+    function Router() {
+        _super.apply(this, arguments);
+    }
+    return Router;
+}(Backbone.Router));
+exports.Router = Router;
+function bootstrapMenuRoutes(router, routeData) {
+    router['routes'] = {};
+    _.each(routeData, function (rd) {
+        router.routes[rd.route] = rd.name.toLowerCase();
+        router[rd.name.toLowerCase()] = function () {
+            var viewName = rd.name + "View";
+            var view = reflector_1.Reflector.createNewInstance(viewName);
+            view.render();
+        };
+    });
+    router._bindRoutes();
+}
+exports.bootstrapMenuRoutes = bootstrapMenuRoutes;
+
+},{"../utils/reflector":7}],6:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"1":function(container,depth0,helpers,partials,data) {
     var alias1=container.lambda, alias2=container.escapeExpression;
 
-  return "                    <li><a href=\""
+  return "                    <li><a href=\"#"
     + alias2(alias1((depth0 != null ? depth0.route : depth0), depth0))
     + "\">"
     + alias2(alias1((depth0 != null ? depth0.name : depth0), depth0))
@@ -137,7 +203,25 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
   return buffer + "                    <li><a href=\"https://twitter.com/digsb\" target=\"_blank\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n                    <li><a href=\"https://github.com/bense4ger/\" target=\"_blank\"><i class=\"fa fa-github\" aria-hidden=\"true\"></i></a></li>\n                    <li><a href=\"https://uk.linkedin.com/in/bdseager\" target=\"_blank\"><i class=\"fa fa-linkedin\" aria-hidden=\"true\"></i></a></li>\n                </ul>\n            </div>\n        </div>\n        <!-- End of Large Menu -->\n        <!-- Small Menu -->\n        <!-- End of Small Menu -->\n    </div>\n</div>\n<section id=\"content\"></section>";
 },"useData":true});
 
-},{"hbsfy/runtime":26}],6:[function(require,module,exports){
+},{"hbsfy/runtime":28}],7:[function(require,module,exports){
+"use strict";
+var Reflector = (function () {
+    function Reflector() {
+    }
+    Reflector.createNewInstance = function (className) {
+        var _this = this;
+        var cls = eval(className);
+        var f = function () {
+            return cls.apply(_this);
+        };
+        f.prototype = cls.prototype;
+        return new f();
+    };
+    return Reflector;
+}());
+exports.Reflector = Reflector;
+
+},{}],8:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -163,7 +247,7 @@ var LayoutView = (function (_super) {
 }(Backbone.View));
 exports.LayoutView = LayoutView;
 
-},{"../templates/layout.hbs":5}],7:[function(require,module,exports){
+},{"../templates/layout.hbs":6}],9:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -231,7 +315,7 @@ exports['default'] = inst;
 module.exports = exports['default'];
 
 
-},{"./handlebars/base":8,"./handlebars/exception":11,"./handlebars/no-conflict":21,"./handlebars/runtime":22,"./handlebars/safe-string":23,"./handlebars/utils":24}],8:[function(require,module,exports){
+},{"./handlebars/base":10,"./handlebars/exception":13,"./handlebars/no-conflict":23,"./handlebars/runtime":24,"./handlebars/safe-string":25,"./handlebars/utils":26}],10:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -337,7 +421,7 @@ exports.createFrame = _utils.createFrame;
 exports.logger = _logger2['default'];
 
 
-},{"./decorators":9,"./exception":11,"./helpers":12,"./logger":20,"./utils":24}],9:[function(require,module,exports){
+},{"./decorators":11,"./exception":13,"./helpers":14,"./logger":22,"./utils":26}],11:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -355,7 +439,7 @@ function registerDefaultDecorators(instance) {
 }
 
 
-},{"./decorators/inline":10}],10:[function(require,module,exports){
+},{"./decorators/inline":12}],12:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -386,7 +470,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":24}],11:[function(require,module,exports){
+},{"../utils":26}],13:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -428,7 +512,7 @@ exports['default'] = Exception;
 module.exports = exports['default'];
 
 
-},{}],12:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -476,7 +560,7 @@ function registerDefaultHelpers(instance) {
 }
 
 
-},{"./helpers/block-helper-missing":13,"./helpers/each":14,"./helpers/helper-missing":15,"./helpers/if":16,"./helpers/log":17,"./helpers/lookup":18,"./helpers/with":19}],13:[function(require,module,exports){
+},{"./helpers/block-helper-missing":15,"./helpers/each":16,"./helpers/helper-missing":17,"./helpers/if":18,"./helpers/log":19,"./helpers/lookup":20,"./helpers/with":21}],15:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -517,7 +601,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":24}],14:[function(require,module,exports){
+},{"../utils":26}],16:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -613,7 +697,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../exception":11,"../utils":24}],15:[function(require,module,exports){
+},{"../exception":13,"../utils":26}],17:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -640,7 +724,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../exception":11}],16:[function(require,module,exports){
+},{"../exception":13}],18:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -671,7 +755,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":24}],17:[function(require,module,exports){
+},{"../utils":26}],19:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -699,7 +783,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{}],18:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -713,7 +797,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{}],19:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -748,7 +832,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":24}],20:[function(require,module,exports){
+},{"../utils":26}],22:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -797,7 +881,7 @@ exports['default'] = logger;
 module.exports = exports['default'];
 
 
-},{"./utils":24}],21:[function(require,module,exports){
+},{"./utils":26}],23:[function(require,module,exports){
 (function (global){
 /* global window */
 'use strict';
@@ -821,7 +905,7 @@ module.exports = exports['default'];
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],22:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1115,7 +1199,7 @@ function executeDecorators(fn, prog, container, depths, data, blockParams) {
 }
 
 
-},{"./base":8,"./exception":11,"./utils":24}],23:[function(require,module,exports){
+},{"./base":10,"./exception":13,"./utils":26}],25:[function(require,module,exports){
 // Build out our basic SafeString type
 'use strict';
 
@@ -1132,7 +1216,7 @@ exports['default'] = SafeString;
 module.exports = exports['default'];
 
 
-},{}],24:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1258,12 +1342,12 @@ function appendContextPath(contextPath, id) {
 }
 
 
-},{}],25:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 // Create a simple path alias to allow browserify to resolve
 // the runtime on a supported path.
 module.exports = require('./dist/cjs/handlebars.runtime')['default'];
 
-},{"./dist/cjs/handlebars.runtime":7}],26:[function(require,module,exports){
+},{"./dist/cjs/handlebars.runtime":9}],28:[function(require,module,exports){
 module.exports = require("handlebars/runtime")["default"];
 
-},{"handlebars/runtime":25}]},{},[2]);
+},{"handlebars/runtime":27}]},{},[2]);
