@@ -12,6 +12,15 @@ div{
         font-family: $font-stack;
         font-weight: 700;
     }
+    h2{
+        color: $rgba-primary-0;
+        font-family: $font-stack;   
+    }
+    p{
+        color: $rgba-primary-0;
+        font-family: $font-stack;
+        text-align: justify;
+    }
 }
 
 ul#navigation{
@@ -23,6 +32,9 @@ ul#navigation{
         &:hover{
             background-color: $rgba-primary-1;
             @include transition(background-color);
+            &:first-child{
+                @include border-radius(2,0,0,2);
+            }
             a{
                 color: $rgba-primary-0;
                 @include transition(color);
@@ -39,10 +51,5 @@ ul#navigation{
 
 section#content{
     margin-top:2em;
-    div{
-        &:first-child{
-            @include border(5,5,5,5,$rgba-primary-0);
-            @include border-radius(2,2,2,2);
-        }
-    }
+    
 }

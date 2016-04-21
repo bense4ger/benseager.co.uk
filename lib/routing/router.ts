@@ -1,6 +1,7 @@
 ///<reference path="../../typings/main.d.ts" />
 import { IMenuItem } from './IMenuItem';
 import { Reflector } from '../utils/reflector';
+import { HomeView } from '../views/home-view';
 
 export class Router extends Backbone.Router{
      
