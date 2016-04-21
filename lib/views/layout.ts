@@ -4,7 +4,7 @@ import Template = require('../templates/layout.hbs');
 
 export class LayoutView extends Backbone.View<LayoutModel>{
     render(): LayoutView {
-        let menuItems = this.model.menu.toJSON();
+        let menuItems = this.model.menu.items;
         let template = <any>Handlebars.compile(Template({
             menuItems: menuItems
         }));

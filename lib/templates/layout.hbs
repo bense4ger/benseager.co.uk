@@ -5,13 +5,25 @@
     <div class="small-2 columns">
         <div id="header-image"><img src="dist/images/somecode.png" alt="header image"></div>
     </div>
-    <div class="small-10 columns">
+    <div class="small-1 columns"></div>
+    <div class="small-9 columns">
         <h1>Ben Seager</h1>
-    </div>
-</div>
-<div class="row show-for-medium" id="menu">
-    <div class="columns">
-        <ul class="menu"></ul>
+        <!-- Large Menu -->
+        <div class="row show-for-large" id="large-menu">
+            <div class="small-12 columns">
+                <ul class="menu" id="navigation">
+                    {{#menuItems}}
+                    <li><a href="{{this.route}}">{{this.name}}</a></li>
+                    {{/menuItems}}
+                    <li><a href="https://twitter.com/digsb" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="https://github.com/bense4ger/" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                    <li><a href="https://uk.linkedin.com/in/bdseager" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- End of Large Menu -->
+        <!-- Small Menu -->
+        <!-- End of Small Menu -->
     </div>
 </div>
 <section id="content"></section>

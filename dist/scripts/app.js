@@ -106,6 +106,13 @@ var MenuModel = (function (_super) {
             ]
         };
     };
+    Object.defineProperty(MenuModel.prototype, "items", {
+        get: function () {
+            return this.get('items');
+        },
+        enumerable: true,
+        configurable: true
+    });
     return MenuModel;
 }(Backbone.Model));
 exports.MenuModel = MenuModel;
@@ -113,8 +120,21 @@ exports.MenuModel = MenuModel;
 },{}],5:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
-module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div class=\"row\">\n    <div class=\"columns spacer\"></div>\n</div>\n<div class=\"row\" id=\"header\">\n    <div class=\"small-2 columns\">\n        <div id=\"header-image\"><img src=\"dist/images/somecode.png\" alt=\"header image\"></div>\n    </div>\n    <div class=\"small-10 columns\">\n        <h1>Ben Seager</h1>\n    </div>\n</div>\n<div class=\"row show-for-medium\" id=\"menu\">\n    <div class=\"columns\">\n        <ul class=\"menu\"></ul>\n    </div>\n</div>\n<section id=\"content\"></section>";
+module.exports = HandlebarsCompiler.template({"1":function(container,depth0,helpers,partials,data) {
+    var alias1=container.lambda, alias2=container.escapeExpression;
+
+  return "                    <li><a href=\""
+    + alias2(alias1((depth0 != null ? depth0.route : depth0), depth0))
+    + "\">"
+    + alias2(alias1((depth0 != null ? depth0.name : depth0), depth0))
+    + "</a></li>\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, options, buffer = 
+  "<div class=\"row\">\n    <div class=\"columns spacer\"></div>\n</div>\n<div class=\"row\" id=\"header\">\n    <div class=\"small-2 columns\">\n        <div id=\"header-image\"><img src=\"dist/images/somecode.png\" alt=\"header image\"></div>\n    </div>\n    <div class=\"small-1 columns\"></div>\n    <div class=\"small-9 columns\">\n        <h1>Ben Seager</h1>\n        <!-- Large Menu -->\n        <div class=\"row show-for-large\" id=\"large-menu\">\n            <div class=\"small-12 columns\">\n                <ul class=\"menu\" id=\"navigation\">\n";
+  stack1 = ((helper = (helper = helpers.menuItems || (depth0 != null ? depth0.menuItems : depth0)) != null ? helper : helpers.helperMissing),(options={"name":"menuItems","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data}),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},options) : helper));
+  if (!helpers.menuItems) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
+  if (stack1 != null) { buffer += stack1; }
+  return buffer + "                    <li><a href=\"https://twitter.com/digsb\" target=\"_blank\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n                    <li><a href=\"https://github.com/bense4ger/\" target=\"_blank\"><i class=\"fa fa-github\" aria-hidden=\"true\"></i></a></li>\n                    <li><a href=\"https://uk.linkedin.com/in/bdseager\" target=\"_blank\"><i class=\"fa fa-linkedin\" aria-hidden=\"true\"></i></a></li>\n                </ul>\n            </div>\n        </div>\n        <!-- End of Large Menu -->\n        <!-- Small Menu -->\n        <!-- End of Small Menu -->\n    </div>\n</div>\n<section id=\"content\"></section>";
 },"useData":true});
 
 },{"hbsfy/runtime":26}],6:[function(require,module,exports){
@@ -131,7 +151,7 @@ var LayoutView = (function (_super) {
         _super.apply(this, arguments);
     }
     LayoutView.prototype.render = function () {
-        var menuItems = this.model.menu.toJSON();
+        var menuItems = this.model.menu.items;
         var template = Handlebars.compile(Template({
             menuItems: menuItems
         }));

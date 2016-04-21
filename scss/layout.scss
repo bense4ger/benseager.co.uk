@@ -8,9 +8,17 @@ $header-height: 150px;
 div#header{
     div.columns{
         &:last-child{
-            height: $header-height;
             h1{
-                line-height: $header-height;
+                line-height: ($header-height / 2) - 10;
+                padding-bottom: 0;
+                padding-top: 15px;
+            }
+        }
+    }
+    div#large-menu{
+        div.columns{
+            &:first-child{
+                padding-left: 0;
             }
         }
     }

@@ -1,4 +1,9 @@
 ///<reference path="../../typings/main.d.ts" />
+interface IMenuItem{
+    name: string;
+    route: string;
+}
+
 export class MenuModel extends Backbone.Model{
     public defaults(): Backbone.ObjectHash {
         return {
@@ -9,4 +14,8 @@ export class MenuModel extends Backbone.Model{
             ]
         }
     }
+    
+    public get items(): Array<IMenuItem> {
+        return this.get('items');
+    } 
 }

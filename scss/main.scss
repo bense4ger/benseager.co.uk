@@ -12,3 +12,12 @@ div{
     }
 }
 
+ul#navigation{
+    li{
+        a{
+            font-family: $font-stack;
+            font-size: 1.5em;
+        }
+    }
+}
+
