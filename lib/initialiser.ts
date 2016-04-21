@@ -1,4 +1,5 @@
 ///<reference path="../typings/main.d.ts" />
+import * as Routing from './routing/router';
 import {  MenuModel } from './models/menu-model';
 import { LayoutModel } from './models/layout-model';
 import { LayoutView } from './views/layout';

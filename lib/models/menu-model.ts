@@ -1,8 +1,5 @@
 ///<reference path="../../typings/main.d.ts" />
-interface IMenuItem{
-    name: string;
-    route: string;
-}
+import { IMenuItem } from '../routing/IMenuItem';
 
 export class MenuModel extends Backbone.Model{
     public defaults(): Backbone.ObjectHash {
