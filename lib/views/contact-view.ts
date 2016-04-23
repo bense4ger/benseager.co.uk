@@ -32,6 +32,7 @@ export class ContactView extends StaticView{
                     ContactHelper.formSubmit()
                         .then((res) => {
                             console.log(res)
+                            this.reset(e);
                         })
                         .catch((err) => {
                             //TODO: Clean this up!

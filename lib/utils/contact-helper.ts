@@ -1,39 +1,29 @@
 ///<reference path="../../typings/main.d.ts" />
 export class ContactHelper {
-    private static RECAPTCHA_URL: string = 'https://www.google.com/recaptcha/api/siteverify';
+    private static VERIFY_URL: string = 'http://localhost:3000/recaptcha-verification'; 
     private static SUBMIT_URL: string = 'http://formspree.io/hello@benseager.co.uk';
     
     public static recaptchaSubmit(): Promise<boolean>{
         let recaptchaPromise = new Promise((resolve, reject) => {
-            resolve(true);
-        });
-        /*let recaptchaPromise = new Promise((resolve, reject) => {
             let response = (<HTMLTextAreaElement>document.getElementById('g-recaptcha-response')).value;
             if(!response){
                 reject('No recaptcha');
             }
             
-            let recaptchaData = {
-                secret: '',
-                response: response 
-            };
-            
             $.ajax({
-                url: this.RECAPTCHA_URL,
-                headers: {
-                    'Access-Control-Allow-Origin': 'http://localhost:8080'
-                },
-                method: 'POST',
+                url: `${this.VERIFY_URL}/${response}`,
+                method: 'GET',
                 dataType: 'json',
-                data: recaptchaData
             })
-            .then((data) => {
-                resolve(data.success);
+            .then((data, textStatus, xhr) => {
+                xhr.status === 204 
+                    ? resolve(true)
+                    : resolve(false);
             })
             .fail(() => {
                 resolve(false);
             });
-        });*/
+        });
         
         return recaptchaPromise;
     }

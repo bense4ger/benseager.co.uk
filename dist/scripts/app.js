@@ -234,8 +234,25 @@ var ContactHelper = (function () {
     function ContactHelper() {
     }
     ContactHelper.recaptchaSubmit = function () {
+        var _this = this;
         var recaptchaPromise = new Promise(function (resolve, reject) {
-            resolve(true);
+            var response = document.getElementById('g-recaptcha-response').value;
+            if (!response) {
+                reject('No recaptcha');
+            }
+            $.ajax({
+                url: _this.VERIFY_URL + "/" + response,
+                method: 'GET',
+                dataType: 'json',
+            })
+                .then(function (data, textStatus, xhr) {
+                xhr.status === 204
+                    ? resolve(true)
+                    : resolve(false);
+            })
+                .fail(function () {
+                resolve(false);
+            });
         });
         return recaptchaPromise;
     };
@@ -263,7 +280,7 @@ var ContactHelper = (function () {
         });
         return submitPromise;
     };
-    ContactHelper.RECAPTCHA_URL = 'https://www.google.com/recaptcha/api/siteverify';
+    ContactHelper.VERIFY_URL = 'http://localhost:3000/recaptcha-verification';
     ContactHelper.SUBMIT_URL = 'http://formspree.io/hello@benseager.co.uk';
     return ContactHelper;
 }());
@@ -355,6 +372,7 @@ var ContactView = (function (_super) {
         return this;
     };
     ContactView.prototype.submit = function (e) {
+        var _this = this;
         e.preventDefault();
         contact_helper_1.ContactHelper.recaptchaSubmit()
             .then(function (res) {
@@ -362,6 +380,7 @@ var ContactView = (function (_super) {
                 contact_helper_1.ContactHelper.formSubmit()
                     .then(function (res) {
                     console.log(res);
+                    _this.reset(e);
                 })
                     .catch(function (err) {
                     console.error(err);
