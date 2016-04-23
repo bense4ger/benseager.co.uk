@@ -47,8 +47,6 @@ export class ContactHelper {
                 message: (<HTMLTextAreaElement>form.querySelectorAll('textarea[name="message"]')[0]).value
             };
             
-            console.log(formData);
-            
             $.ajax({
                 url: this.SUBMIT_URL,
                 method: 'POST',
