@@ -71,10 +71,12 @@ var Initialiser = (function () {
 }());
 exports.Initialiser = Initialiser;
 
-},{"./models/layout-model":3,"./models/menu-model":4,"./routing/router":5,"./views/layout":11}],2:[function(require,module,exports){
+},{"./models/layout-model":3,"./models/menu-model":4,"./routing/router":5,"./views/layout":17}],2:[function(require,module,exports){
 "use strict";
+var recaptcha_1 = require('./utils/recaptcha');
 var initialiser_1 = require('./initialiser');
 $('document').ready(function () {
+    window['recaptchaLoad'] = recaptcha_1.recaptchaLoad;
     var i = new initialiser_1.Initialiser();
     i.initLayout().then(function (result) {
         if (result === true) {
@@ -92,7 +94,7 @@ $('document').ready(function () {
 });
 $(document).foundation();
 
-},{"./initialiser":1}],3:[function(require,module,exports){
+},{"./initialiser":1,"./utils/recaptcha":12}],3:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -183,20 +185,36 @@ function bootstrapMenuRoutes(router, routeData) {
 }
 exports.bootstrapMenuRoutes = bootstrapMenuRoutes;
 
-},{"../utils/reflector":9}],6:[function(require,module,exports){
+},{"../utils/reflector":13}],6:[function(require,module,exports){
+// hbsfy compiled Handlebars template
+var HandlebarsCompiler = require('hbsfy/runtime');
+module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h2>build</h2>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-8 medium-9 small-offset-3 columns\">\n        <p>Have a project and need a developer?</p>\n        <p>I'm always interested to hear about interesting projects.</p>\n        <p>As a full-stack developer I'm happy working on small, static sites (such as this one) or larger, more complex projects.</p>\n        <p>Feel free to get in touch - details are on the<a href=\"#contact\"> contact page </a> - if you're just after a bit of advice, or if you'd like to bring me in to work on something I'd love to hear from you.</p>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h2>3rd sector</h2>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-8 medium-9 small-offset-3 columns\">\n        <p>I'm really happy to offer my time pro-bono (or at a vastly reduced rate, everything is considered on its merits) to charities and voluntary organisations</p>\n        <p>If you need a developer, then feel free to drop me a line</p>\n    </div>\n</div>";
+},"useData":true});
+
+},{"hbsfy/runtime":38}],7:[function(require,module,exports){
+// hbsfy compiled Handlebars template
+var HandlebarsCompiler = require('hbsfy/runtime');
+module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h2>contact</h2>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-8 medium-9 small-offset-3 columns\">\n        <p>Want to get in touch? You can drop me a message using this form, via email or on social media.</p>\n        <div class=\"spacer\"></div>\n        <div class=\"row\">\n            <div class=\"columns\">\n                <form id=\"contact-form\">\n                    <div class=\"row\">\n                        <div class=\"small-12 medium-3 columns\"><label for=\"name\">Name</label></div>\n                        <div class=\"small-12 medium-9 columns\"><input type=\"text\" name=\"name\" id=\"name\" required/></div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"small-12 medium-3 columns\"><label for=\"email\">Email</label></div>\n                        <div class=\"small-12 medium-9 columns\"><input type=\"text\" name=\"email\" id=\"email\" required/></div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"small-12 medium-3 columns\"><label for=\"message\">Message</label></div>\n                        <div class=\"small-12 medium-9 columns\"><textarea name=\"message\" id=\"\" cols=\"30\" rows=\"5\" required></textarea></div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"small-12 medium-9 medium-offset-3 columns\">\n                            <div class=\"g-recaptcha\"></div>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"small-4 medium-4 medium-offset-3 columns\"><input id=\"reset\" type=\"button\" value=\"Reset\" /></div>\n                        <div class=\"small-4 medium-4 medium-offset-1 columns end\"><input type=\"submit\" value=\"Send\" /></div>\n                    </div>\n                </form>\n            </div>\n        </div>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h2>email</h2>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-8 medium-9 small-offset-3 columms\">\n        <p>Prefer to send an email?  No problem.</p>\n        <p>I can be reached via <a href=\"mailto:hello@benseager.co.uk\">hello@benseager.co.uk</a></p>\n    </div>\n</div>\n<script src='https://www.google.com/recaptcha/api.js?onload=recaptchaLoad&render=explicit' async defer></script>";
+},"useData":true});
+
+},{"hbsfy/runtime":38}],8:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h2>hello</h2>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-8 medium-9 small-offset-3 columns end\">\n        <p>Thanks for stopping by</p>\n        <p>I'm Ben Seager, a full stack software developer based in Norwich.</p>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h2>interests</h2>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-8 medium-9 small-offset-3 columns end\">\n        <p>I'm primarily (professionally, at least) a .Net developer with plenty of experience working right the way through the Microsoft stack.</p>\n        <p>I can also be found using Node and client-side frameworks such as Backbone (I've kinda fallen in love with Vue.js now as well).</p>\n        <p>Most of my interest lies with the web - either on the client or further down the stack.  I've recently developed a bit of an obsession with microservices.</p>\n        <p>Less work related interests include a PS4 and an unhealthy relationship with Norwich City FC.</p>\n    </div>\n</div>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":32}],7:[function(require,module,exports){
+},{"hbsfy/runtime":38}],9:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"1":function(container,depth0,helpers,partials,data) {
     var alias1=container.lambda, alias2=container.escapeExpression;
 
-  return "                    <li><a href=\"#"
+  return "                    <li><a id=\"nav_"
+    + alias2(alias1((depth0 != null ? depth0.name : depth0), depth0))
+    + "\" href=\"#"
     + alias2(alias1((depth0 != null ? depth0.route : depth0), depth0))
     + "\">"
     + alias2(alias1((depth0 != null ? depth0.name : depth0), depth0))
@@ -210,14 +228,63 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
   return buffer + "                    <li><a href=\"https://twitter.com/digsb\" target=\"_blank\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n                    <li><a href=\"https://github.com/bense4ger/\" target=\"_blank\"><i class=\"fa fa-github\" aria-hidden=\"true\"></i></a></li>\n                    <li><a href=\"https://uk.linkedin.com/in/bdseager\" target=\"_blank\"><i class=\"fa fa-linkedin\" aria-hidden=\"true\"></i></a></li>\n                </ul>\n            </div>\n        </div>\n        <!-- End of Large Menu -->\n        <!-- Small Menu -->\n        <!-- End of Small Menu -->\n    </div>\n</div>\n<section id=\"content\"></section>";
 },"useData":true});
 
-},{"hbsfy/runtime":32}],8:[function(require,module,exports){
+},{"hbsfy/runtime":38}],10:[function(require,module,exports){
+"use strict";
+var ContactHelper = (function () {
+    function ContactHelper() {
+    }
+    ContactHelper.recaptchaSubmit = function () {
+        var recaptchaPromise = new Promise(function (resolve, reject) {
+            resolve(true);
+        });
+        return recaptchaPromise;
+    };
+    ContactHelper.formSubmit = function () {
+        var _this = this;
+        var submitPromise = new Promise(function (resolve, reject) {
+            var form = document.getElementById('contact-form');
+            var formData = new FormData(form);
+            $.ajax({
+                url: _this.SUBMIT_URL,
+                method: 'POST',
+                dataType: 'json',
+                data: JSON.stringify(formData)
+            })
+                .then(function (data) {
+                resolve(true);
+            })
+                .fail(function () {
+                reject('Form not submitted');
+            });
+        });
+        return submitPromise;
+    };
+    ContactHelper.RECAPTCHA_URL = 'https://www.google.com/recaptcha/api/siteverify';
+    ContactHelper.SUBMIT_URL = 'http://formspree.io/hello@benseager.co.uk';
+    return ContactHelper;
+}());
+exports.ContactHelper = ContactHelper;
+
+},{}],11:[function(require,module,exports){
 "use strict";
 var home_view_1 = require('../views/home-view');
+var contact_view_1 = require('../views/contact-view');
+var build_view_1 = require('../views/build-view');
 exports.GAC = {
-    HomeView: home_view_1.HomeView
+    HomeView: home_view_1.HomeView,
+    ContactView: contact_view_1.ContactView,
+    BuildView: build_view_1.BuildView
 };
 
-},{"../views/home-view":10}],9:[function(require,module,exports){
+},{"../views/build-view":14,"../views/contact-view":15,"../views/home-view":16}],12:[function(require,module,exports){
+"use strict";
+function recaptchaLoad() {
+    var el = document.getElementsByClassName('g-recaptcha')[0];
+    grecaptcha.render(el, { sitekey: '6LezDh4TAAAAAHSemQNOAK8pfm6FaqIjqSLzjWVS' });
+}
+exports.recaptchaLoad = recaptchaLoad;
+
+},{}],13:[function(require,module,exports){
 "use strict";
 var gac_1 = require('./gac');
 var Reflector = (function () {
@@ -231,7 +298,89 @@ var Reflector = (function () {
 }());
 exports.Reflector = Reflector;
 
-},{"./gac":8}],10:[function(require,module,exports){
+},{"./gac":11}],14:[function(require,module,exports){
+"use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var static_view_1 = require('./static-view');
+var Template = require('../templates/build.hbs');
+var BuildView = (function (_super) {
+    __extends(BuildView, _super);
+    function BuildView() {
+        _super.apply(this, arguments);
+    }
+    BuildView.prototype.render = function () {
+        var template = Handlebars.compile(Template());
+        var html = template();
+        this.$el.html(html);
+        return this;
+    };
+    return BuildView;
+}(static_view_1.StaticView));
+exports.BuildView = BuildView;
+
+},{"../templates/build.hbs":6,"./static-view":18}],15:[function(require,module,exports){
+"use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var contact_helper_1 = require('../utils/contact-helper');
+var static_view_1 = require('./static-view');
+var Template = require('../templates/contact.hbs');
+var ContactView = (function (_super) {
+    __extends(ContactView, _super);
+    function ContactView() {
+        _super.apply(this, arguments);
+    }
+    ContactView.prototype.events = function () {
+        return {
+            'submit #contact-form': 'submit',
+            'click #reset': 'reset'
+        };
+    };
+    ContactView.prototype.render = function () {
+        var template = Handlebars.compile(Template());
+        var html = template();
+        this.$el.html(html);
+        this.delegateEvents();
+        return this;
+    };
+    ContactView.prototype.submit = function (e) {
+        e.preventDefault();
+        contact_helper_1.ContactHelper.recaptchaSubmit()
+            .then(function (res) {
+            if (res) {
+                contact_helper_1.ContactHelper.formSubmit()
+                    .then(function (res) {
+                    console.log(res);
+                })
+                    .catch(function (err) {
+                    console.error(err);
+                });
+            }
+        })
+            .catch(function (err) {
+            console.error(err);
+        });
+    };
+    ContactView.prototype.reset = function (e) {
+        e.preventDefault();
+        var controls = document.getElementById('contact-form').querySelectorAll('input[type="text"], textarea');
+        _.each(controls, function (c) {
+            c.value = '';
+        });
+        grecaptcha.reset();
+    };
+    return ContactView;
+}(static_view_1.StaticView));
+exports.ContactView = ContactView;
+
+},{"../templates/contact.hbs":7,"../utils/contact-helper":10,"./static-view":18}],16:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -255,7 +404,7 @@ var HomeView = (function (_super) {
 }(static_view_1.StaticView));
 exports.HomeView = HomeView;
 
-},{"../templates/home.hbs":6,"./static-view":12}],11:[function(require,module,exports){
+},{"../templates/home.hbs":8,"./static-view":18}],17:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -281,7 +430,7 @@ var LayoutView = (function (_super) {
 }(Backbone.View));
 exports.LayoutView = LayoutView;
 
-},{"../templates/layout.hbs":7}],12:[function(require,module,exports){
+},{"../templates/layout.hbs":9}],18:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -307,7 +456,7 @@ var StaticView = (function (_super) {
 }(Backbone.View));
 exports.StaticView = StaticView;
 
-},{}],13:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -375,7 +524,7 @@ exports['default'] = inst;
 module.exports = exports['default'];
 
 
-},{"./handlebars/base":14,"./handlebars/exception":17,"./handlebars/no-conflict":27,"./handlebars/runtime":28,"./handlebars/safe-string":29,"./handlebars/utils":30}],14:[function(require,module,exports){
+},{"./handlebars/base":20,"./handlebars/exception":23,"./handlebars/no-conflict":33,"./handlebars/runtime":34,"./handlebars/safe-string":35,"./handlebars/utils":36}],20:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -481,7 +630,7 @@ exports.createFrame = _utils.createFrame;
 exports.logger = _logger2['default'];
 
 
-},{"./decorators":15,"./exception":17,"./helpers":18,"./logger":26,"./utils":30}],15:[function(require,module,exports){
+},{"./decorators":21,"./exception":23,"./helpers":24,"./logger":32,"./utils":36}],21:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -499,7 +648,7 @@ function registerDefaultDecorators(instance) {
 }
 
 
-},{"./decorators/inline":16}],16:[function(require,module,exports){
+},{"./decorators/inline":22}],22:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -530,7 +679,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":30}],17:[function(require,module,exports){
+},{"../utils":36}],23:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -572,7 +721,7 @@ exports['default'] = Exception;
 module.exports = exports['default'];
 
 
-},{}],18:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -620,7 +769,7 @@ function registerDefaultHelpers(instance) {
 }
 
 
-},{"./helpers/block-helper-missing":19,"./helpers/each":20,"./helpers/helper-missing":21,"./helpers/if":22,"./helpers/log":23,"./helpers/lookup":24,"./helpers/with":25}],19:[function(require,module,exports){
+},{"./helpers/block-helper-missing":25,"./helpers/each":26,"./helpers/helper-missing":27,"./helpers/if":28,"./helpers/log":29,"./helpers/lookup":30,"./helpers/with":31}],25:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -661,7 +810,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":30}],20:[function(require,module,exports){
+},{"../utils":36}],26:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -757,7 +906,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../exception":17,"../utils":30}],21:[function(require,module,exports){
+},{"../exception":23,"../utils":36}],27:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -784,7 +933,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../exception":17}],22:[function(require,module,exports){
+},{"../exception":23}],28:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -815,7 +964,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":30}],23:[function(require,module,exports){
+},{"../utils":36}],29:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -843,7 +992,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{}],24:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -857,7 +1006,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{}],25:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -892,7 +1041,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":30}],26:[function(require,module,exports){
+},{"../utils":36}],32:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -941,7 +1090,7 @@ exports['default'] = logger;
 module.exports = exports['default'];
 
 
-},{"./utils":30}],27:[function(require,module,exports){
+},{"./utils":36}],33:[function(require,module,exports){
 (function (global){
 /* global window */
 'use strict';
@@ -965,7 +1114,7 @@ module.exports = exports['default'];
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],28:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1259,7 +1408,7 @@ function executeDecorators(fn, prog, container, depths, data, blockParams) {
 }
 
 
-},{"./base":14,"./exception":17,"./utils":30}],29:[function(require,module,exports){
+},{"./base":20,"./exception":23,"./utils":36}],35:[function(require,module,exports){
 // Build out our basic SafeString type
 'use strict';
 
@@ -1276,7 +1425,7 @@ exports['default'] = SafeString;
 module.exports = exports['default'];
 
 
-},{}],30:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1402,12 +1551,12 @@ function appendContextPath(contextPath, id) {
 }
 
 
-},{}],31:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 // Create a simple path alias to allow browserify to resolve
 // the runtime on a supported path.
 module.exports = require('./dist/cjs/handlebars.runtime')['default'];
 
-},{"./dist/cjs/handlebars.runtime":13}],32:[function(require,module,exports){
+},{"./dist/cjs/handlebars.runtime":19}],38:[function(require,module,exports){
 module.exports = require("handlebars/runtime")["default"];
 
-},{"handlebars/runtime":31}]},{},[2]);
+},{"handlebars/runtime":37}]},{},[2]);
