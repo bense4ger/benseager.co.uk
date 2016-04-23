@@ -41,7 +41,13 @@ export class ContactHelper {
     public static formSubmit(): Promise<boolean> {
         let submitPromise = new Promise((resolve, reject) => {
             let form = <HTMLFormElement>document.getElementById('contact-form');
-            let formData = new FormData(form);
+            let formData = {
+                name: (<HTMLInputElement>form.querySelectorAll('input[name="name"]')[0]).value,
+                email: (<HTMLInputElement>form.querySelectorAll('input[name="email"]')[0]).value,
+                message: (<HTMLTextAreaElement>form.querySelectorAll('textarea[name="message"]')[0]).value
+            };
+            
+            console.log(formData);
             
             $.ajax({
                 url: this.SUBMIT_URL,

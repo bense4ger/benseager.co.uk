@@ -189,7 +189,7 @@ exports.bootstrapMenuRoutes = bootstrapMenuRoutes;
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h2>build</h2>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-8 medium-9 small-offset-3 columns\">\n        <p>Have a project and need a developer?</p>\n        <p>I'm always interested to hear about interesting projects.</p>\n        <p>As a full-stack developer I'm happy working on small, static sites (such as this one) or larger, more complex projects.</p>\n        <p>Feel free to get in touch - details are on the<a href=\"#contact\"> contact page </a> - if you're just after a bit of advice, or if you'd like to bring me in to work on something I'd love to hear from you.</p>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h2>3rd sector</h2>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-8 medium-9 small-offset-3 columns\">\n        <p>I'm really happy to offer my time pro-bono (or at a vastly reduced rate, everything is considered on its merits) to charities and voluntary organisations</p>\n        <p>If you need a developer, then feel free to drop me a line</p>\n    </div>\n</div>";
+    return "<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h2>build</h2>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-8 medium-9 small-offset-3 columns\">\n        <p>Have a project and need a developer?</p>\n        <p>I'm always interested to hear about interesting projects.</p>\n        <p>As a full-stack developer I'm happy working on small, static sites or larger, more complex projects.</p>\n        <p>Feel free to get in touch - details are on the<a href=\"#contact\"> contact page </a> - if you're just after a bit of advice, or if you'd like to bring me in to work on something I'd love to hear from you.</p>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h2>3rd sector</h2>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-8 medium-9 small-offset-3 columns\">\n        <p>I'm really happy to offer my time to charities and voluntary organisations.</p>\n        <p>If you need a developer, then feel free to drop me a line.</p>\n    </div>\n</div>";
 },"useData":true});
 
 },{"hbsfy/runtime":38}],7:[function(require,module,exports){
@@ -243,7 +243,12 @@ var ContactHelper = (function () {
         var _this = this;
         var submitPromise = new Promise(function (resolve, reject) {
             var form = document.getElementById('contact-form');
-            var formData = new FormData(form);
+            var formData = {
+                name: form.querySelectorAll('input[name="name"]')[0].value,
+                email: form.querySelectorAll('input[name="email"]')[0].value,
+                message: form.querySelectorAll('textarea[name="message"]')[0].value
+            };
+            console.log(formData);
             $.ajax({
                 url: _this.SUBMIT_URL,
                 method: 'POST',
