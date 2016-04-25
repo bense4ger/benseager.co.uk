@@ -2,14 +2,13 @@
     <div class="columns spacer"></div>
 </div>
 <div class="row" id="header">
-    <div class="small-2 columns">
+    <div class="small-3 large-3 columns">
         <div id="header-image"><img src="dist/images/somecode.png" alt="header image"></div>
     </div>
-    <div class="small-1 columns"></div>
-    <div class="small-9 columns">
+    <div class="small-7 large-9 columns">
         <h1>Ben Seager</h1>
         <!-- Large Menu -->
-        <div class="row show-for-large" id="large-menu">
+        <div class="row show-for-medium" id="large-menu">
             <div class="small-12 columns">
                 <ul class="menu" id="navigation">
                     {{#menuItems}}
@@ -22,7 +21,12 @@
             </div>
         </div>
         <!-- End of Large Menu -->
+    </div>
+    <div class="small-2 hide-for-medium columns">
         <!-- Small Menu -->
+        <div class="row hide-for-medium" id="small-menu">
+            <i class="fa fa-2x fa-bars"></i>
+        </div>
         <!-- End of Small Menu -->
     </div>
 </div>

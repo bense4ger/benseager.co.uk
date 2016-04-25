@@ -44,7 +44,7 @@ ul#navigation{
             @include transition(color);
             color: $rgba-primary-1;
             font-family: $font-stack;
-            font-size: 1.5em;
+            //font-size: 1.5em;
         }
     }
 }
