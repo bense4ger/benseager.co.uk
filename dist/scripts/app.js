@@ -226,7 +226,7 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
     + "</a></li>\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, options, buffer = 
-  "<!-- Header Start -->\n<div class=\"row\">\n    <div class=\"columns spacer\"></div>\n</div>\n<div class=\"row\" id=\"header\">\n    <div class=\"small-3 large-3 columns\">\n        <div id=\"header-image\"><img src=\"dist/images/somecode.png\" alt=\"header image\"></div>\n    </div>\n    <div class=\"small-7 large-9 columns\">\n        <h1>Ben Seager</h1>\n        <!-- Large Menu -->\n        <div class=\"row show-for-medium\" id=\"large-menu\">\n            <div class=\"small-12 columns\">\n                <ul class=\"menu\" id=\"navigation\">\n";
+  "<!-- Header Start -->\n<div class=\"row\" id=\"header\">\n    <div class=\"small-3 large-3 columns\">\n        <div id=\"header-image\"><img src=\"dist/images/somecode.png\" alt=\"header image\"></div>\n    </div>\n    <div class=\"small-7 large-9 columns\">\n        <h1>Ben Seager</h1>\n        <!-- Large Menu -->\n        <div class=\"row show-for-medium\" id=\"large-menu\">\n            <div class=\"small-12 columns\">\n                <ul class=\"menu\" id=\"navigation\">\n";
   stack1 = ((helper = (helper = helpers.menuItems || (depth0 != null ? depth0.menuItems : depth0)) != null ? helper : helpers.helperMissing),(options={"name":"menuItems","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data}),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},options) : helper));
   if (!helpers.menuItems) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
   if (stack1 != null) { buffer += stack1; }
