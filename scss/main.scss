@@ -23,7 +23,7 @@ div{
     }
 }
 
-ul#navigation{
+ul.menu{
     background-color: $rgba-primary-0;
     @include border-radius(2,2,2,2);
     @include box-shadow(0, 10, 10, -10, $rgba-primary-0);
@@ -45,6 +45,38 @@ ul#navigation{
             color: $rgba-primary-1;
             font-family: $font-stack;
             font-size: 1.5em;
+        }
+    }
+}
+
+div#off-canvas{
+    background-color: $rgba-primary-1a;
+    @include box-shadow(0, 10, 10, -10, $rgba-primary-0);
+}
+
+ul#small-navigation{
+    width: 100%;
+    list-style: none;
+    margin-left: 0;
+    li{
+        display: block;
+        a{
+            padding-left:15px;
+            display: block;
+            width: 100%;
+            font-size: 1.5em;
+            font-weight: 700;
+            font-family: $font-stack;
+            @include transition(all);
+            &:active{
+                @include transition(all);
+                background-color: $rgba-primary-0;
+                color: $rgba-primary-1;
+                outline: none;
+            }
+            &:focus{
+                outline: none;
+            }
         }
     }
 }

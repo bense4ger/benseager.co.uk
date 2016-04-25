@@ -3,10 +3,12 @@ import * as Routing from './routing/router';
 import {  MenuModel } from './models/menu-model';
 import { LayoutModel } from './models/layout-model';
 import { LayoutView } from './views/layout';
+import { SmallMenuView } from './views/small-menu-view';
 
 export class Initialiser{
     private _menuJSONPath: string = './menu.json';
     private _view: LayoutView;
+    private _smallMenu: SmallMenuView;
     private _router: Routing.Router;
     
     constructor(){}
@@ -32,6 +34,11 @@ export class Initialiser{
                     model: model
                 });
                 
+                this._smallMenu = new SmallMenuView({
+                    el: $('div#small-menu'),
+                    model: model
+                });
+                
                 resolve(true);
             })
             .fail(() => {
@@ -45,6 +52,7 @@ export class Initialiser{
     public renderLayout(): Promise<boolean> {
         let renderPromise = new Promise((resolve, reject) => {
             try{
+                this._smallMenu.render();
                 this._view.render();
                 resolve(true);
             }
