@@ -92,7 +92,6 @@ $('document').ready(function () {
         console.log(err);
     });
 });
-$(document).foundation();
 
 },{"./initialiser":1,"./utils/recaptcha":12}],3:[function(require,module,exports){
 "use strict";
@@ -221,11 +220,11 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
     + "</a></li>\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, options, buffer = 
-  "<div class=\"row\">\n    <div class=\"columns spacer\"></div>\n</div>\n<div class=\"row\" id=\"header\">\n    <div class=\"small-3 large-3 columns\">\n        <div id=\"header-image\"><img src=\"dist/images/somecode.png\" alt=\"header image\"></div>\n    </div>\n    <div class=\"small-7 large-9 columns\">\n        <h1>Ben Seager</h1>\n        <!-- Large Menu -->\n        <div class=\"row show-for-medium\" id=\"large-menu\">\n            <div class=\"small-12 columns\">\n                <ul class=\"menu\" id=\"navigation\">\n";
+  "<!-- Header Start -->\n<div class=\"row\">\n    <div class=\"columns spacer\"></div>\n</div>\n<div class=\"row\" id=\"header\">\n    <div class=\"small-3 large-3 columns\">\n        <div id=\"header-image\"><img src=\"dist/images/somecode.png\" alt=\"header image\"></div>\n    </div>\n    <div class=\"small-7 large-9 columns\">\n        <h1>Ben Seager</h1>\n        <!-- Large Menu -->\n        <div class=\"row show-for-medium\" id=\"large-menu\">\n            <div class=\"small-12 columns\">\n                <ul class=\"menu\" id=\"navigation\">\n";
   stack1 = ((helper = (helper = helpers.menuItems || (depth0 != null ? depth0.menuItems : depth0)) != null ? helper : helpers.helperMissing),(options={"name":"menuItems","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data}),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},options) : helper));
   if (!helpers.menuItems) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
   if (stack1 != null) { buffer += stack1; }
-  return buffer + "                    <li><a href=\"https://twitter.com/digsb\" target=\"_blank\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n                    <li><a href=\"https://github.com/bense4ger/\" target=\"_blank\"><i class=\"fa fa-github\" aria-hidden=\"true\"></i></a></li>\n                    <li><a href=\"https://uk.linkedin.com/in/bdseager\" target=\"_blank\"><i class=\"fa fa-linkedin\" aria-hidden=\"true\"></i></a></li>\n                </ul>\n            </div>\n        </div>\n        <!-- End of Large Menu -->\n    </div>\n    <div class=\"small-2 hide-for-medium columns\">\n        <!-- Small Menu -->\n        <div class=\"row hide-for-medium\" id=\"small-menu\">\n            <i class=\"fa fa-2x fa-bars\"></i>\n        </div>\n        <!-- End of Small Menu -->\n    </div>\n</div>\n<section id=\"content\"></section>";
+  return buffer + "                    <li><a href=\"https://twitter.com/digsb\" target=\"_blank\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n                    <li><a href=\"https://github.com/bense4ger/\" target=\"_blank\"><i class=\"fa fa-github\" aria-hidden=\"true\"></i></a></li>\n                    <li><a href=\"https://uk.linkedin.com/in/bdseager\" target=\"_blank\"><i class=\"fa fa-linkedin\" aria-hidden=\"true\"></i></a></li>\n                </ul>\n            </div>\n        </div>\n        <!-- End of Large Menu -->\n    </div>\n    <div class=\"small-2 hide-for-medium columns\">\n        <!-- Small Menu -->\n        <div class=\"row hide-for-medium\" id=\"small-menu\">\n            <button type=\"button\" data-toggle=\"offCanvas\">Click Me</button>\n        </div>\n        <!-- End of Small Menu -->\n    </div>\n</div>\n<!-- Header End -->\n<section id=\"content\"></section>\n";
 },"useData":true});
 
 },{"hbsfy/runtime":38}],10:[function(require,module,exports){

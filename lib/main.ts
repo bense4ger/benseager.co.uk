@@ -21,6 +21,3 @@ $('document').ready(() => {
         console.log(err);
     });
 });
-
-//Initialise Foundation
-(<any>$(document)).foundation();
