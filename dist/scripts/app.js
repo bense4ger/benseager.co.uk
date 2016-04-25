@@ -201,7 +201,7 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h2>contact</h2>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-12 large-9 large-offset-3 columns\">\n        <p>Want to get in touch? You can drop me a message using this form, via email or on social media.</p>\n        <div class=\"spacer\"></div>\n    </div>\n</div>\n<form id=\"contact-form\">\n    <div class=\"row\">\n        <div class=\"small-12 medium-9 medium-offset-3 columns\"><label for=\"name\">Name</label></div>\n        <div class=\"small-12 medium-9 medium-offset-3 columns\"><input type=\"text\" name=\"name\" id=\"name\" required/></div>\n    </div>\n    <div class=\"row\">\n        <div class=\"small-12 medium-9 medium-offset-3 columns\"><label for=\"email\">Email</label></div>\n        <div class=\"small-12 medium-9 medium-offset-3 columns\"><input type=\"text\" name=\"email\" id=\"email\" required/></div>\n    </div>\n    <div class=\"row\">\n        <div class=\"small-12 medium-9 medium-offset-3 columns\"><label for=\"message\">Message</label></div>\n        <div class=\"small-12 medium-9 medium-offset-3 columns\"><textarea name=\"message\" id=\"\" cols=\"30\" rows=\"5\" required></textarea></div>\n    </div>\n    <div class=\"row\">\n        <div class=\"small-12 medium-9 medium-offset-3 columns\">\n            <div class=\"g-recaptcha\" style=\"width:100%\"></div>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"small-4 medium-4 medium-offset-3 columns\"><input type=\"submit\" value=\"Send\" /></div>\n        <div class=\"small-4 small-offset-4 medium-4 medium-offset-1 columns end\"><input id=\"reset\" type=\"button\" value=\"Reset\" /></div>\n    </div>    \n</form>\n<div class=\"row\">\n    <div id=\"contact-loading\" class=\"small-12 medium-9 medium-offset-3 columns text-center\"><i class=\"fa fa-5x fa-spinner fa-pulse\"></i></div>\n    <div id=\"contact-success\" class=\"small-12 medium-9 medium-offset-3 columns text-center\">\n        <i class=\"fa fa-5x fa-check\"></i>\n        <p>All done. I'll be in touch as soon as possible</p>\n    </div>\n    <div id=\"contact-failure\" class=\"small-12 medium-9 medium-offset-9 columns text-center\">\n        <i class=\"fa fa-5x fa-exclamation\"></i>\n        <p>Uh-oh. Something's gone wrong. Please try again later</p>\n    </div>\n</div>\n<div class=\"spacer hide-for-medium\"></div>        \n<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h2>email</h2>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-12 large-9 large-offset-3 columns\">\n        <p>Prefer to send an email?  No problem.</p>\n        <p>I can be reached via <a href=\"mailto:hello@benseager.co.uk\">hello@benseager.co.uk</a></p>\n    </div>\n</div>\n<script src='https://www.google.com/recaptcha/api.js?onload=recaptchaLoad&render=explicit' async defer></script>";
+    return "<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h2>contact</h2>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-12 large-9 large-offset-3 columns\">\n        <p>Want to get in touch? You can drop me a message using this form, via email or on social media.</p>\n        <div class=\"spacer\"></div>\n    </div>\n</div>\n<form id=\"contact-form\">\n    <div class=\"row\">\n        <div class=\"small-12 medium-9 medium-offset-3 columns\"><label for=\"name\">Name</label></div>\n        <div class=\"small-12 medium-9 medium-offset-3 columns\"><input type=\"text\" name=\"name\" id=\"name\" required/></div>\n    </div>\n    <div class=\"row\">\n        <div class=\"small-12 medium-9 medium-offset-3 columns\"><label for=\"email\">Email</label></div>\n        <div class=\"small-12 medium-9 medium-offset-3 columns\"><input type=\"text\" name=\"email\" id=\"email\" required/></div>\n    </div>\n    <div class=\"row\">\n        <div class=\"small-12 medium-9 medium-offset-3 columns\"><label for=\"message\">Message</label></div>\n        <div class=\"small-12 medium-9 medium-offset-3 columns\"><textarea name=\"message\" id=\"\" cols=\"30\" rows=\"5\" required></textarea></div>\n    </div>\n    <div class=\"row\">\n        <div class=\"small-12 medium-9 medium-offset-3 columns\">\n            <div class=\"g-recaptcha\" style=\"width:100%\"></div>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"small-4 medium-4 medium-offset-3 columns\"><input type=\"submit\" value=\"Send\" /></div>\n        <div class=\"small-4 small-offset-4 medium-4 medium-offset-1 columns end\"><input id=\"reset\" type=\"button\" value=\"Reset\" /></div>\n    </div>    \n</form>\n<div class=\"row\">\n    <div id=\"contact-loading\" class=\"small-12 medium-9 medium-offset-3 columns text-center contact-status\"><i class=\"fa fa-5x fa-spinner fa-pulse\"></i></div>\n</div>\n<div class=\"row\">\n    <div id=\"contact-success\" class=\"small-12 medium-9 medium-offset-3 columns text-center contact-status\">\n        <i class=\"fa fa-5x fa-check\"></i>\n        <p>All done. I'll be in touch as soon as possible</p>\n    </div>\n</div>\n<div class=\"row\">\n    <div id=\"contact-failure\" class=\"small-12 medium-9 medium-offset-3 columns text-center contact-status\">\n        <i class=\"fa fa-5x fa-exclamation\"></i>\n        <p>Uh-oh. Something's gone wrong. Please try again later</p>\n    </div>\n</div>\n<div class=\"spacer hide-for-medium\"></div>        \n<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h2>email</h2>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-12 large-9 large-offset-3 columns\">\n        <p>Prefer to send an email?  No problem.</p>\n        <p>I can be reached via <a href=\"mailto:hello@benseager.co.uk\">hello@benseager.co.uk</a></p>\n    </div>\n</div>\n<script src='https://www.google.com/recaptcha/api.js?onload=recaptchaLoad&render=explicit' async defer></script>";
 },"useData":true});
 
 },{"hbsfy/runtime":40}],8:[function(require,module,exports){
@@ -270,14 +270,14 @@ var ContactHelper = (function () {
             $.ajax({
                 url: _this.VERIFY_URL + "/" + response,
                 method: 'GET',
-                dataType: 'json',
+                dataType: 'text',
             })
                 .then(function (data, textStatus, xhr) {
                 xhr.status === 200
                     ? resolve(true)
                     : resolve(false);
             })
-                .fail(function () {
+                .fail(function (xhr, textStatus, err) {
                 resolve(false);
             });
         });
@@ -296,16 +296,107 @@ var ContactHelper = (function () {
                 url: _this.SUBMIT_URL,
                 method: 'POST',
                 dataType: 'json',
+                contentType: 'application/json',
                 data: JSON.stringify(formData)
             })
                 .then(function (data) {
                 resolve(true);
             })
-                .fail(function () {
-                reject('Form not submitted');
+                .fail(function (xhr, textStatus, err) {
+                reject("Form not submitted " + textStatus);
             });
         });
         return submitPromise;
+    };
+    Object.defineProperty(ContactHelper, "form", {
+        get: function () {
+            if (ContactHelper._form !== undefined) {
+                return ContactHelper._form;
+            }
+            else {
+                ContactHelper._form = $('form#contact-form');
+                return ContactHelper._form;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ContactHelper, "loading", {
+        get: function () {
+            if (ContactHelper._loading !== undefined) {
+                return ContactHelper._loading;
+            }
+            else {
+                ContactHelper._loading = $('div#contact-loading');
+                return ContactHelper._loading;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ContactHelper, "success", {
+        get: function () {
+            if (ContactHelper._success !== undefined) {
+                return ContactHelper._success;
+            }
+            else {
+                ContactHelper._success = $('div#contact-success');
+                return ContactHelper._success;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ContactHelper, "failure", {
+        get: function () {
+            if (ContactHelper._failure !== undefined) {
+                return ContactHelper._failure;
+            }
+            else {
+                ContactHelper._failure = $('div#contact-failure');
+                return ContactHelper._failure;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ContactHelper.showLoader = function () {
+        ContactHelper.form.addClass('hidden');
+        setTimeout(function () {
+            ContactHelper.form.hide();
+            ContactHelper.loading.show();
+            ContactHelper.loading.addClass('visible');
+        }, 300);
+    };
+    ContactHelper.hideLoader = function () {
+        ContactHelper.loading.removeClass('visible');
+        setTimeout(function () {
+            ContactHelper.loading.hide();
+        }, 300);
+    };
+    ContactHelper.submitSuccess = function () {
+        ContactHelper.success.show();
+        ContactHelper.success.addClass('visible');
+        setTimeout(function () {
+            ContactHelper.success.removeClass('visible');
+            setTimeout(function () {
+                ContactHelper.success.hide();
+                ContactHelper.form.show();
+                ContactHelper.form.removeClass('hidden');
+            }, 300);
+        }, 2500);
+    };
+    ContactHelper.submitFailure = function () {
+        ContactHelper.failure.show();
+        ContactHelper.failure.addClass('visible');
+        setTimeout(function () {
+            ContactHelper.failure.removeClass('visible');
+            setTimeout(function () {
+                ContactHelper.failure.hide();
+                ContactHelper.form.show();
+                ContactHelper.form.removeClass('hidden');
+            }, 300);
+        }, 2500);
     };
     ContactHelper.VERIFY_URL = 'http://api-benseager.azurewebsites.net/recaptcha-verification';
     ContactHelper.SUBMIT_URL = 'http://formspree.io/hello@benseager.co.uk';
@@ -401,21 +492,29 @@ var ContactView = (function (_super) {
     ContactView.prototype.submit = function (e) {
         var _this = this;
         e.preventDefault();
+        contact_helper_1.ContactHelper.showLoader();
         contact_helper_1.ContactHelper.recaptchaSubmit()
             .then(function (res) {
             if (res) {
                 contact_helper_1.ContactHelper.formSubmit()
                     .then(function (res) {
-                    console.log(res);
+                    contact_helper_1.ContactHelper.hideLoader();
+                    contact_helper_1.ContactHelper.submitSuccess();
                     _this.reset(e);
                 })
                     .catch(function (err) {
-                    console.error(err);
+                    contact_helper_1.ContactHelper.hideLoader();
+                    contact_helper_1.ContactHelper.submitFailure();
                 });
+            }
+            else {
+                contact_helper_1.ContactHelper.hideLoader();
+                contact_helper_1.ContactHelper.submitFailure();
             }
         })
             .catch(function (err) {
-            console.error(err);
+            contact_helper_1.ContactHelper.hideLoader();
+            contact_helper_1.ContactHelper.submitFailure();
         });
     };
     ContactView.prototype.reset = function (e) {

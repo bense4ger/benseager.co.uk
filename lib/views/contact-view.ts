@@ -26,23 +26,30 @@ export class ContactView extends StaticView{
     private submit(e: JQueryEventObject): void {
         e.preventDefault();
         
+        ContactHelper.showLoader();
+        
         ContactHelper.recaptchaSubmit()
             .then((res) => {
                 if(res){
                     ContactHelper.formSubmit()
                         .then((res) => {
-                            console.log(res)
+                            ContactHelper.hideLoader();
+                            ContactHelper.submitSuccess();
                             this.reset(e);
                         })
                         .catch((err) => {
-                            //TODO: Clean this up!
-                            console.error(err);
+                            ContactHelper.hideLoader();
+                            ContactHelper.submitFailure();
                         });
+                }
+                else{
+                    ContactHelper.hideLoader();
+                    ContactHelper.submitFailure();
                 }
             })
             .catch((err) => {
-                //TODO: Clean this up!
-                console.error(err);
+                ContactHelper.hideLoader();
+                ContactHelper.submitFailure();
             });
     }
     

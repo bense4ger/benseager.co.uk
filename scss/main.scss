@@ -85,3 +85,29 @@ section#content{
     margin-top:2em;
     
 }
+
+form#contact-form{
+    @include transition(all);
+}
+
+div.contact-status{
+    @include transition(all);
+    display: none;
+    opacity: 0;
+    i{
+        color: $rgba-primary-0;
+    }
+    p{
+        text-align: center;
+    }
+}
+
+div.hidden{
+    @include transition(all);
+    opacity: 0;
+}
+
+div.visible{
+    @include transition(all);
+    opacity: 1;
+}
