@@ -1,6 +1,6 @@
 ///<reference path="../../typings/main.d.ts" />
 export class ContactHelper {
-    private static VERIFY_URL: string = 'http://localhost:3000/recaptcha-verification'; 
+    private static VERIFY_URL: string = 'http://api-benseager.azurewebsites.net/recaptcha-verification'; 
     private static SUBMIT_URL: string = 'http://formspree.io/hello@benseager.co.uk';
     
     public static recaptchaSubmit(): Promise<boolean>{
