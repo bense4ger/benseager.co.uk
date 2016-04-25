@@ -16,7 +16,7 @@ export class ContactHelper {
                 dataType: 'json',
             })
             .then((data, textStatus, xhr) => {
-                xhr.status === 204 
+                xhr.status === 200 
                     ? resolve(true)
                     : resolve(false);
             })
