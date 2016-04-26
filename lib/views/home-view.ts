@@ -8,6 +8,8 @@ export class HomeView extends StaticView {
         
         this.$el.html(html);
         
+        this.pageView('home', '/#');
+        
         return this;
     }
 }

@@ -77,7 +77,7 @@ var Initialiser = (function () {
 }());
 exports.Initialiser = Initialiser;
 
-},{"./models/layout-model":3,"./models/menu-model":4,"./routing/router":5,"./views/layout":18,"./views/small-menu-view":19}],2:[function(require,module,exports){
+},{"./models/layout-model":3,"./models/menu-model":4,"./routing/router":5,"./views/layout":19,"./views/small-menu-view":20}],2:[function(require,module,exports){
 "use strict";
 var recaptcha_1 = require('./utils/recaptcha');
 var initialiser_1 = require('./initialiser');
@@ -99,7 +99,7 @@ $('document').ready(function () {
     });
 });
 
-},{"./initialiser":1,"./utils/recaptcha":13}],3:[function(require,module,exports){
+},{"./initialiser":1,"./utils/recaptcha":14}],3:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -190,28 +190,28 @@ function bootstrapMenuRoutes(router, routeData) {
 }
 exports.bootstrapMenuRoutes = bootstrapMenuRoutes;
 
-},{"../utils/reflector":14}],6:[function(require,module,exports){
+},{"../utils/reflector":15}],6:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h2>build</h2>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-8 medium-9 small-offset-3 columns\">\n        <p>Have a project and need a developer?</p>\n        <p>I'm always interested to hear about interesting projects.</p>\n        <p>As a full-stack developer I'm happy working on small, static sites or larger, more complex projects.</p>\n        <p>Feel free to get in touch - details are on the<a href=\"#contact\"> contact page </a> - if you're just after a bit of advice, or if you'd like to bring me in to work on something I'd love to hear from you.</p>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h2>3rd sector</h2>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-8 medium-9 small-offset-3 columns\">\n        <p>I'm really happy to offer my time to charities and voluntary organisations.</p>\n        <p>If you need a developer, then feel free to drop me a line.</p>\n    </div>\n</div>";
 },"useData":true});
 
-},{"hbsfy/runtime":40}],7:[function(require,module,exports){
+},{"hbsfy/runtime":41}],7:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h2>contact</h2>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-12 large-9 large-offset-3 columns\">\n        <p>Want to get in touch? You can drop me a message using this form, via email or on social media.</p>\n        <div class=\"spacer\"></div>\n    </div>\n</div>\n<form id=\"contact-form\">\n    <div class=\"row\">\n        <div class=\"small-12 medium-9 medium-offset-3 columns\"><label for=\"name\">Name</label></div>\n        <div class=\"small-12 medium-9 medium-offset-3 columns\"><input type=\"text\" name=\"name\" id=\"name\" required/></div>\n    </div>\n    <div class=\"row\">\n        <div class=\"small-12 medium-9 medium-offset-3 columns\"><label for=\"email\">Email</label></div>\n        <div class=\"small-12 medium-9 medium-offset-3 columns\"><input type=\"text\" name=\"email\" id=\"email\" required/></div>\n    </div>\n    <div class=\"row\">\n        <div class=\"small-12 medium-9 medium-offset-3 columns\"><label for=\"message\">Message</label></div>\n        <div class=\"small-12 medium-9 medium-offset-3 columns\"><textarea name=\"message\" id=\"\" cols=\"30\" rows=\"5\" required></textarea></div>\n    </div>\n    <div class=\"row\">\n        <div class=\"small-12 medium-9 medium-offset-3 columns\">\n            <div class=\"g-recaptcha\" style=\"width:100%\"></div>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"small-4 medium-4 medium-offset-3 columns\"><input type=\"submit\" value=\"Send\" /></div>\n        <div class=\"small-4 small-offset-4 medium-4 medium-offset-1 columns end\"><input id=\"reset\" type=\"button\" value=\"Reset\" /></div>\n    </div>    \n</form>\n<div class=\"row\">\n    <div id=\"contact-loading\" class=\"small-12 medium-9 medium-offset-3 columns text-center contact-status\"><i class=\"fa fa-5x fa-spinner fa-pulse\"></i></div>\n</div>\n<div class=\"row\">\n    <div id=\"contact-success\" class=\"small-12 medium-9 medium-offset-3 columns text-center contact-status\">\n        <i class=\"fa fa-5x fa-check\"></i>\n        <p>All done. I'll be in touch as soon as possible</p>\n    </div>\n</div>\n<div class=\"row\">\n    <div id=\"contact-failure\" class=\"small-12 medium-9 medium-offset-3 columns text-center contact-status\">\n        <i class=\"fa fa-5x fa-exclamation\"></i>\n        <p>Uh-oh. Something's gone wrong. Please try again later</p>\n    </div>\n</div>\n<div class=\"spacer hide-for-medium\"></div>        \n<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h2>email</h2>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-12 large-9 large-offset-3 columns\">\n        <p>Prefer to send an email?  No problem.</p>\n        <p>I can be reached via <a href=\"mailto:hello@benseager.co.uk\">hello@benseager.co.uk</a></p>\n    </div>\n</div>\n<script src='https://www.google.com/recaptcha/api.js?onload=recaptchaLoad&render=explicit' async defer></script>";
 },"useData":true});
 
-},{"hbsfy/runtime":40}],8:[function(require,module,exports){
+},{"hbsfy/runtime":41}],8:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h2>hello</h2>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-8 medium-9 small-offset-3 columns end\">\n        <p>Thanks for stopping by</p>\n        <p>I'm Ben Seager, a full stack software developer based in Norwich.</p>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-12 columns\">\n        <h2>interests</h2>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"small-8 medium-9 small-offset-3 columns end\">\n        <p>I'm primarily (professionally, at least) a .Net developer with plenty of experience working right the way through the Microsoft stack.</p>\n        <p>I can also be found using Node and client-side frameworks such as Backbone (I've kinda fallen in love with Vue.js now as well).</p>\n        <p>Most of my interest lies with the web - either on the client or further down the stack.  I've recently developed a bit of an obsession with microservices.</p>\n        <p>Less work related interests include a PS4 and an unhealthy relationship with Norwich City FC.</p>\n    </div>\n</div>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":40}],9:[function(require,module,exports){
+},{"hbsfy/runtime":41}],9:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"1":function(container,depth0,helpers,partials,data) {
@@ -233,7 +233,7 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
   return buffer + "                    <li><a href=\"https://twitter.com/digsb\" target=\"_blank\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n                    <li><a href=\"https://github.com/bense4ger/\" target=\"_blank\"><i class=\"fa fa-github\" aria-hidden=\"true\"></i></a></li>\n                    <li><a href=\"https://uk.linkedin.com/in/bdseager\" target=\"_blank\"><i class=\"fa fa-linkedin\" aria-hidden=\"true\"></i></a></li>\n                </ul>\n            </div>\n        </div>\n        <!-- End of Large Menu -->\n    </div>\n    <div class=\"small-2 hide-for-medium columns\">\n        <!-- Small Menu -->\n        <div class=\"row hide-for-medium\" id=\"small-menu\">\n            <i class=\"fa fa-2x fa-bars\" data-toggle=\"off-canvas\"></i>\n        </div>\n        <!-- End of Small Menu -->\n    </div>\n</div>\n<!-- Header End -->\n<section id=\"content\"></section>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":40}],10:[function(require,module,exports){
+},{"hbsfy/runtime":41}],10:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"1":function(container,depth0,helpers,partials,data) {
@@ -255,7 +255,7 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
   return buffer + "</ul>\n<div class=\"spacer\"></div>\n<ul class=\"menu\">\n    <li><a href=\"https://twitter.com/digsb\" target=\"_blank\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n    <li><a href=\"https://github.com/bense4ger/\" target=\"_blank\"><i class=\"fa fa-github\" aria-hidden=\"true\"></i></a></li>\n    <li><a href=\"https://uk.linkedin.com/in/bdseager\" target=\"_blank\"><i class=\"fa fa-linkedin\" aria-hidden=\"true\"></i></a></li>\n</ul>";
 },"useData":true});
 
-},{"hbsfy/runtime":40}],11:[function(require,module,exports){
+},{"hbsfy/runtime":41}],11:[function(require,module,exports){
 "use strict";
 var ContactHelper = (function () {
     function ContactHelper() {
@@ -406,6 +406,14 @@ exports.ContactHelper = ContactHelper;
 
 },{}],12:[function(require,module,exports){
 "use strict";
+function gaPageView(pageName, route) {
+    ga('set', pageName, route);
+    ga('send', 'pageview');
+}
+exports.gaPageView = gaPageView;
+
+},{}],13:[function(require,module,exports){
+"use strict";
 var home_view_1 = require('../views/home-view');
 var contact_view_1 = require('../views/contact-view');
 var build_view_1 = require('../views/build-view');
@@ -415,7 +423,7 @@ exports.GAC = {
     BuildView: build_view_1.BuildView
 };
 
-},{"../views/build-view":15,"../views/contact-view":16,"../views/home-view":17}],13:[function(require,module,exports){
+},{"../views/build-view":16,"../views/contact-view":17,"../views/home-view":18}],14:[function(require,module,exports){
 "use strict";
 function recaptchaLoad() {
     var el = document.getElementsByClassName('g-recaptcha')[0];
@@ -423,7 +431,7 @@ function recaptchaLoad() {
 }
 exports.recaptchaLoad = recaptchaLoad;
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 "use strict";
 var gac_1 = require('./gac');
 var Reflector = (function () {
@@ -437,7 +445,7 @@ var Reflector = (function () {
 }());
 exports.Reflector = Reflector;
 
-},{"./gac":12}],15:[function(require,module,exports){
+},{"./gac":13}],16:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -455,13 +463,14 @@ var BuildView = (function (_super) {
         var template = Handlebars.compile(Template());
         var html = template();
         this.$el.html(html);
+        this.pageView('build', '/#build');
         return this;
     };
     return BuildView;
 }(static_view_1.StaticView));
 exports.BuildView = BuildView;
 
-},{"../templates/build.hbs":6,"./static-view":20}],16:[function(require,module,exports){
+},{"../templates/build.hbs":6,"./static-view":21}],17:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -487,6 +496,7 @@ var ContactView = (function (_super) {
         var html = template();
         this.$el.html(html);
         this.delegateEvents();
+        this.pageView('contact', '/#contact');
         return this;
     };
     ContactView.prototype.submit = function (e) {
@@ -529,7 +539,7 @@ var ContactView = (function (_super) {
 }(static_view_1.StaticView));
 exports.ContactView = ContactView;
 
-},{"../templates/contact.hbs":7,"../utils/contact-helper":11,"./static-view":20}],17:[function(require,module,exports){
+},{"../templates/contact.hbs":7,"../utils/contact-helper":11,"./static-view":21}],18:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -547,13 +557,14 @@ var HomeView = (function (_super) {
         var template = Handlebars.compile(Template());
         var html = template();
         this.$el.html(html);
+        this.pageView('home', '/#');
         return this;
     };
     return HomeView;
 }(static_view_1.StaticView));
 exports.HomeView = HomeView;
 
-},{"../templates/home.hbs":8,"./static-view":20}],18:[function(require,module,exports){
+},{"../templates/home.hbs":8,"./static-view":21}],19:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -579,7 +590,7 @@ var LayoutView = (function (_super) {
 }(Backbone.View));
 exports.LayoutView = LayoutView;
 
-},{"../templates/layout.hbs":9}],19:[function(require,module,exports){
+},{"../templates/layout.hbs":9}],20:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -616,13 +627,14 @@ var SmallMenuView = (function (_super) {
 }(Backbone.View));
 exports.SmallMenuView = SmallMenuView;
 
-},{"../templates/small-menu.hbs":10}],20:[function(require,module,exports){
+},{"../templates/small-menu.hbs":10}],21:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
+var ga_helper_1 = require('../utils/ga-helper');
 var StaticModel = (function (_super) {
     __extends(StaticModel, _super);
     function StaticModel() {
@@ -638,11 +650,14 @@ var StaticView = (function (_super) {
     StaticView.prototype.initialize = function () {
         this.$el = $('section#content');
     };
+    StaticView.prototype.pageView = function (pageName, route) {
+        ga_helper_1.gaPageView(pageName, route);
+    };
     return StaticView;
 }(Backbone.View));
 exports.StaticView = StaticView;
 
-},{}],21:[function(require,module,exports){
+},{"../utils/ga-helper":12}],22:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -710,7 +725,7 @@ exports['default'] = inst;
 module.exports = exports['default'];
 
 
-},{"./handlebars/base":22,"./handlebars/exception":25,"./handlebars/no-conflict":35,"./handlebars/runtime":36,"./handlebars/safe-string":37,"./handlebars/utils":38}],22:[function(require,module,exports){
+},{"./handlebars/base":23,"./handlebars/exception":26,"./handlebars/no-conflict":36,"./handlebars/runtime":37,"./handlebars/safe-string":38,"./handlebars/utils":39}],23:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -816,7 +831,7 @@ exports.createFrame = _utils.createFrame;
 exports.logger = _logger2['default'];
 
 
-},{"./decorators":23,"./exception":25,"./helpers":26,"./logger":34,"./utils":38}],23:[function(require,module,exports){
+},{"./decorators":24,"./exception":26,"./helpers":27,"./logger":35,"./utils":39}],24:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -834,7 +849,7 @@ function registerDefaultDecorators(instance) {
 }
 
 
-},{"./decorators/inline":24}],24:[function(require,module,exports){
+},{"./decorators/inline":25}],25:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -865,7 +880,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":38}],25:[function(require,module,exports){
+},{"../utils":39}],26:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -907,7 +922,7 @@ exports['default'] = Exception;
 module.exports = exports['default'];
 
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -955,7 +970,7 @@ function registerDefaultHelpers(instance) {
 }
 
 
-},{"./helpers/block-helper-missing":27,"./helpers/each":28,"./helpers/helper-missing":29,"./helpers/if":30,"./helpers/log":31,"./helpers/lookup":32,"./helpers/with":33}],27:[function(require,module,exports){
+},{"./helpers/block-helper-missing":28,"./helpers/each":29,"./helpers/helper-missing":30,"./helpers/if":31,"./helpers/log":32,"./helpers/lookup":33,"./helpers/with":34}],28:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -996,7 +1011,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":38}],28:[function(require,module,exports){
+},{"../utils":39}],29:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1092,7 +1107,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../exception":25,"../utils":38}],29:[function(require,module,exports){
+},{"../exception":26,"../utils":39}],30:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1119,7 +1134,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../exception":25}],30:[function(require,module,exports){
+},{"../exception":26}],31:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1150,7 +1165,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":38}],31:[function(require,module,exports){
+},{"../utils":39}],32:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1178,7 +1193,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1192,7 +1207,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{}],33:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1227,7 +1242,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":38}],34:[function(require,module,exports){
+},{"../utils":39}],35:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1276,7 +1291,7 @@ exports['default'] = logger;
 module.exports = exports['default'];
 
 
-},{"./utils":38}],35:[function(require,module,exports){
+},{"./utils":39}],36:[function(require,module,exports){
 (function (global){
 /* global window */
 'use strict';
@@ -1300,7 +1315,7 @@ module.exports = exports['default'];
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],36:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1594,7 +1609,7 @@ function executeDecorators(fn, prog, container, depths, data, blockParams) {
 }
 
 
-},{"./base":22,"./exception":25,"./utils":38}],37:[function(require,module,exports){
+},{"./base":23,"./exception":26,"./utils":39}],38:[function(require,module,exports){
 // Build out our basic SafeString type
 'use strict';
 
@@ -1611,7 +1626,7 @@ exports['default'] = SafeString;
 module.exports = exports['default'];
 
 
-},{}],38:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1737,12 +1752,12 @@ function appendContextPath(contextPath, id) {
 }
 
 
-},{}],39:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 // Create a simple path alias to allow browserify to resolve
 // the runtime on a supported path.
 module.exports = require('./dist/cjs/handlebars.runtime')['default'];
 
-},{"./dist/cjs/handlebars.runtime":21}],40:[function(require,module,exports){
+},{"./dist/cjs/handlebars.runtime":22}],41:[function(require,module,exports){
 module.exports = require("handlebars/runtime")["default"];
 
-},{"handlebars/runtime":39}]},{},[2]);
+},{"handlebars/runtime":40}]},{},[2]);

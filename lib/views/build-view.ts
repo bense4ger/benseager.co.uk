@@ -8,6 +8,8 @@ export class BuildView extends StaticView {
         
         this.$el.html(html);
         
+        this.pageView('build', '/#build');
+        
         return this;
     }
 }

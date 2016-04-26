@@ -20,6 +20,8 @@ export class ContactView extends StaticView{
         
         this.delegateEvents();
         
+        this.pageView('contact', '/#contact');
+        
         return this;
     }
     
