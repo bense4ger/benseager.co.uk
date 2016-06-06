@@ -433,7 +433,7 @@ var CookieConsent = (function () {
     });
     CookieConsent.prototype._checkForConsent = function () {
         var cookieNames = _.map(document.cookie.split(';'), function (c) { return c.split('=')[0]; });
-        this._consented = cookieNames.indexOf(" " + COOKIE_NAME) >= 0;
+        this._consented = cookieNames.indexOf(" " + COOKIE_NAME) >= 0 || cookieNames.indexOf(COOKIE_NAME) >= 0;
     };
     CookieConsent.prototype.initialiseConsent = function () {
         this._view = new cookie_consent_view_1.CookieConsentView();

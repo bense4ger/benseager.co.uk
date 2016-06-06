@@ -16,7 +16,7 @@ export class CookieConsent{
     
     private _checkForConsent(): void {
         let cookieNames = _.map(document.cookie.split(';'), (c) => { return c.split('=')[0]; });
-        this._consented = cookieNames.indexOf(` ${COOKIE_NAME}`) >= 0;
+        this._consented = cookieNames.indexOf(` ${COOKIE_NAME}`) >= 0 || cookieNames.indexOf(COOKIE_NAME) >= 0;
     }
     
     public initialiseConsent(): void {
