@@ -4,14 +4,18 @@ import {  MenuModel } from './models/menu-model';
 import { LayoutModel } from './models/layout-model';
 import { LayoutView } from './views/layout';
 import { SmallMenuView } from './views/small-menu-view';
+import { CookieConsent } from './utils/cookie-consent';
 
 export class Initialiser{
     private _menuJSONPath: string = './menu.json';
     private _view: LayoutView;
     private _smallMenu: SmallMenuView;
+    private _cookieConsent: CookieConsent;
     private _router: Routing.Router;
     
-    constructor(){}
+    constructor(){
+        this._cookieConsent = new CookieConsent();
+    }
     
     public initLayout(): Promise<boolean>{
         let initPromise = new Promise((resolve, reject) => {
@@ -54,6 +58,9 @@ export class Initialiser{
             try{
                 this._smallMenu.render();
                 this._view.render();
+                if(!this._cookieConsent.consented){
+                    this._cookieConsent.initialiseConsent();
+                }
                 resolve(true);
             }
             catch(err){

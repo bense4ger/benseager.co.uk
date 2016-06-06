@@ -1,2 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Arimo:400,700);
 $font-stack: 'Arimo', 'Helvetica', sans-serif;
+@media(max-width: 40em){
+    h2{
+        font-weight: 700;
+    }
+}

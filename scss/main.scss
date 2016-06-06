@@ -16,6 +16,14 @@ div{
         color: $rgba-primary-0;
         font-family: $font-stack;   
     }
+    h3{
+        color: $rgba-primary-0;
+        font-family: $font-stack;
+    }
+    h4{
+        color: $rgba-primary-0;
+        font-family: $font-stack;
+    }
     p{
         color: $rgba-primary-0;
         font-family: $font-stack;
@@ -134,6 +142,34 @@ ul#small-navigation{
     }
 }
 
+div#cookie-consent{
+    position: static;
+    display: block;
+    max-height: 110px;
+    max-width: 62.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: $rgba-primary-2a;
+    @include transition(all);
+    @include box-shadow(0, 10, 10, -10, $rgba-primary-0);
+    input[type="button"]{
+        margin-top: 0;
+    }
+    &.thin{
+        overflow: hidden;
+        opacity: 0;
+        @include transition(all, "200");
+        max-height: 0;
+    }
+}
+
+@media (max-width: 40em){
+    div#cookie-consent {
+        padding-bottom: 10px;
+        max-height: 250px;
+    }
+}
+
 footer{
     padding-top: 1.5em;
     background-color: $rgba-primary-2a;
@@ -173,4 +209,8 @@ div.hidden{
 div.visible{
     @include transition(all);
     opacity: 1;
+}
+
+div.off-canvas-content{
+    background-color: $rgba-primary-1a;
 }
