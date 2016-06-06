@@ -419,9 +419,9 @@ exports.ContactHelper = ContactHelper;
 },{}],13:[function(require,module,exports){
 "use strict";
 var cookie_consent_view_1 = require('../views/cookie-consent-view');
+var COOKIE_NAME = 'benseager_consent';
 var CookieConsent = (function () {
     function CookieConsent() {
-        this.COOKIE_NAME = 'benseager_consent';
         this._checkForConsent();
     }
     Object.defineProperty(CookieConsent.prototype, "consented", {
@@ -432,12 +432,16 @@ var CookieConsent = (function () {
         configurable: true
     });
     CookieConsent.prototype._checkForConsent = function () {
-        this._consented = document.cookie.split(';').indexOf(this.COOKIE_NAME) >= 0;
+        var cookieNames = _.map(document.cookie.split(';'), function (c) { return c.split('=')[0]; });
+        this._consented = cookieNames.indexOf(" " + COOKIE_NAME) >= 0;
     };
     CookieConsent.prototype.initialiseConsent = function () {
         this._view = new cookie_consent_view_1.CookieConsentView();
         this._view.$el = $('div#cookie-consent');
         this._view.render().transitionIn();
+    };
+    CookieConsent.dropCookie = function () {
+        document.cookie = COOKIE_NAME + "=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
     };
     return CookieConsent;
 }());
@@ -586,6 +590,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var static_view_1 = require('./static-view');
+var cookie_consent_1 = require('../utils/cookie-consent');
 var Template = require('../templates/cookie-consent.hbs');
 var CookieConsentView = (function (_super) {
     __extends(CookieConsentView, _super);
@@ -608,16 +613,17 @@ var CookieConsentView = (function (_super) {
         document.getElementById('cookie-consent').className = '';
     };
     CookieConsentView.prototype.transitionOut = function () {
-        $('div#cookie-consent').addClass('thin');
+        document.getElementById('cookie-consent').className += 'thin';
     };
     CookieConsentView.prototype.cookieAccept = function () {
+        cookie_consent_1.CookieConsent.dropCookie();
         this.transitionOut();
     };
     return CookieConsentView;
 }(static_view_1.StaticView));
 exports.CookieConsentView = CookieConsentView;
 
-},{"../templates/cookie-consent.hbs":8,"./static-view":24}],21:[function(require,module,exports){
+},{"../templates/cookie-consent.hbs":8,"../utils/cookie-consent":13,"./static-view":24}],21:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
