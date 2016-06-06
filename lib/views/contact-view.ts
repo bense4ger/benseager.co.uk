@@ -25,8 +25,22 @@ export class ContactView extends StaticView{
         return this;
     }
     
+    private recaptchQuickCheck(): boolean {
+        let recaptcha = document.getElementsByTagName('iframe')[0];
+        recaptcha.className = '';
+        
+        let recaptchaVal = (<HTMLTextAreaElement>document.getElementById('g-recaptcha-response')).value;
+        if(!recaptchaVal){
+            recaptcha.className += 'warn-pulse';
+            return false;
+        }
+        
+        return true;
+    }
+    
     private submit(e: JQueryEventObject): void {
         e.preventDefault();
+        if(!this.recaptchQuickCheck()) return;
         
         ContactHelper.showLoader();
         

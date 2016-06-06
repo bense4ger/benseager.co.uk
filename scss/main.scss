@@ -214,3 +214,8 @@ div.visible{
 div.off-canvas-content{
     background-color: $rgba-primary-1a;
 }
+
+.warn-pulse{
+    @include border(1, 1, 1, 1, $rgba-secondary-2-0);
+    @include border-pulse();
+}
