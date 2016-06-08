@@ -242,7 +242,7 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
   stack1 = ((helper = (helper = helpers.menuItems || (depth0 != null ? depth0.menuItems : depth0)) != null ? helper : helpers.helperMissing),(options={"name":"menuItems","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data}),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},options) : helper));
   if (!helpers.menuItems) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
   if (stack1 != null) { buffer += stack1; }
-  return buffer + "                    <li><a href=\"https://twitter.com/digsb\" target=\"_blank\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n                    <li><a href=\"https://github.com/bense4ger/\" target=\"_blank\"><i class=\"fa fa-github\" aria-hidden=\"true\"></i></a></li>\n                    <li><a href=\"https://uk.linkedin.com/in/bdseager\" target=\"_blank\"><i class=\"fa fa-linkedin\" aria-hidden=\"true\"></i></a></li>\n                </ul>\n            </div>\n        </div>\n        <!-- End of Large Menu -->\n    </div>\n    <div class=\"small-2 hide-for-medium columns\">\n        <!-- Small Menu -->\n        <div class=\"row hide-for-medium\" id=\"small-menu\">\n            <i class=\"fa fa-2x fa-bars\" data-toggle=\"off-canvas\"></i>\n        </div>\n        <!-- End of Small Menu -->\n    </div>\n</div>\n<!-- Header End -->\n<section id=\"content\"></section>\n";
+  return buffer + "                    <li><a href=\"https://twitter.com/digsb\" target=\"_blank\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n                    <li><a href=\"https://github.com/bense4ger/\" target=\"_blank\"><i class=\"fa fa-github\" aria-hidden=\"true\"></i></a></li>\n                    <li><a href=\"https://uk.linkedin.com/in/bdseager\" target=\"_blank\"><i class=\"fa fa-linkedin\" aria-hidden=\"true\"></i></a></li>\n                </ul>\n            </div>\n        </div>\n        <!-- End of Large Menu -->\n    </div>\n    <div class=\"small-2 hide-for-medium columns\">\n        <!-- Small Menu -->\n        <div class=\"row hide-for-medium\" id=\"small-menu\">\n            <!--<i class=\"fa fa-2x fa-bars\" data-toggle=\"off-canvas\"></i>-->\n            <i class=\"fa fa-2x fa-bars\" id=\"hamburger\"></i>\n        </div>\n        <!-- End of Small Menu -->\n    </div>\n</div>\n<!-- Header End -->\n<section id=\"content\"></section>\n";
 },"useData":true});
 
 },{"hbsfy/runtime":44}],11:[function(require,module,exports){
@@ -673,6 +673,11 @@ var LayoutView = (function (_super) {
     function LayoutView() {
         _super.apply(this, arguments);
     }
+    LayoutView.prototype.events = function () {
+        return {
+            'click i#hamburger': 'openCanvas'
+        };
+    };
     LayoutView.prototype.render = function () {
         var menuItems = this.model.menu.items;
         var template = Handlebars.compile(Template({
@@ -680,7 +685,11 @@ var LayoutView = (function (_super) {
         }));
         var html = template();
         this.$el.html(html);
+        this.delegateEvents();
         return this;
+    };
+    LayoutView.prototype.openCanvas = function () {
+        $('div#off-canvas').foundation('open');
     };
     return LayoutView;
 }(Backbone.View));
