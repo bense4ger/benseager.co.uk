@@ -16,17 +16,18 @@
         0%   { border-top-color: $rgba-primary-0 }
         25%  { border-top-color: $rgba-primary-2; }
         50%  { border-top-color: $rgba-primary-3; }
-        75%  { border-top-color: $rgba-primary-4; }
+        75%  { border-top-color: $rgba-primary-2; }
         100% { border-top-color: $rgba-primary-1; }
     }
     @keyframes primary-pulse {
         0%   { border-top-color: $rgba-primary-0 }
         25%  { border-top-color: $rgba-primary-2; }
         50%  { border-top-color: $rgba-primary-3; }
-        75%  { border-top-color: $rgba-primary-4; }
+        75%  { border-top-color: $rgba-primary-2; }
         100% { border-top-color: $rgba-primary-1; }
     }
     
-    -webkit-animation: primary-pulse 30s infinite alternate;
-    animation: primary-pulse 30s infinite alternate;
+    -webkit-animation: primary-pulse 15s infinite alternate;
+    -moz-animation: primary-pulse 15s infinite alternate;
+    animation: primary-pulse 15s infinite alternate;
 }
