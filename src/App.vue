@@ -2,9 +2,7 @@
   <div id="app">
     <div class="container-fluid">
       <heading :page-title="pageTitle"></heading>
-      <div id="nav">
-        <router-link to="/">Home</router-link>
-      </div>
+      <site-menu></site-menu>
       <router-view/>
     </div>
   </div>
@@ -12,6 +10,7 @@
 
 <script>
   import Heading from '@/components/Heading.vue';
+  import Menu from '@/components/Menu.vue';
 
   export default {
     name: 'app',
@@ -22,6 +21,7 @@
     },
     components: {
       heading: Heading,
+      siteMenu: Menu,
     },
   };
 </script>
@@ -41,5 +41,8 @@
         color: $primary-0;
       }
     }
+  }
+  body{
+    background-color: $secondary-2-2;
   }
 </style>
