@@ -1,5 +1,7 @@
 <template>
-    <img src="../assets/logo.png" alt="logo" />
+    <div id="logo-container">
+        <img src="../assets/logo.png" alt="logo" />
+    </div>
 </template>
 
 <script>
@@ -8,9 +10,14 @@
     };
 </script>
 
-<style scoped>
-    img {
-        width: 100%;
-        height: 100%;
+<style lang="scss">
+    div#logo-container {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        img {
+            width: 50%;
+            display: block;
+            margin: auto;
+        }
     }
 </style>
