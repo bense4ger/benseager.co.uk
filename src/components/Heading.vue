@@ -27,9 +27,6 @@
     div#header {
         background-color: $primary-3;
         border-bottom: 0.25rem solid $primary-4;
-        /*-webkit-box-shadow:  0px 0.25rem 0.5rem $primary-4;
-        -moz-box-shadow:  0px 0.25rem 0.5rem $primary-4;
-        box-shadow:  0px 0.25rem 0.5rem $primary-4;*/
         h1 {
             color: $primary-2;
             font-size: 5rem;

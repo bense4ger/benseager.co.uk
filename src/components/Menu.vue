@@ -1,8 +1,8 @@
 <template>
-    <div class="row">
+    <div class="row nav-wrapper">
         <div class="col-sm">
             <div id="menu">
-                <b-navbar toggleable="lg">
+                <b-navbar toggleable="md">
                     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
                     <b-collapse is-nav id="nav-collapse">
                         <b-navbar-nav>
@@ -21,6 +21,25 @@
     };
 </script>
 
-<style>
-
+<style lang="scss">
+    div.nav-wrapper {
+        background-color: $secondary-1-4;
+        nav {
+            button {
+                background-color: $secondary-1-1;
+            }
+            ul.navbar-nav {
+                li.nav-item {
+                    display: block;
+                    a.nav-link {
+                        &.active {
+                            color: $primary-2 !important;
+                        }
+                        color: $secondary-1-1 !important;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
 </style>
