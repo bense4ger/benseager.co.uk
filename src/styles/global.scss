@@ -1,1 +1,15 @@
 @import "colours";
+
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  p {
+    color: $primary-4;
+  }
+}
+
+div.container {
+  padding-top: 1rem;
+}
