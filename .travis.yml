@@ -16,4 +16,6 @@ deploy:
   region: eu-west-2
   on:
     repo: bense4ger/benseager.co.uk
-    branch: master
+    branches:
+      only:
+        - master
