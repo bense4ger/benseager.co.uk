@@ -14,7 +14,7 @@
             <div class="col-sm-12 col-md-10 offset-md-2">
                 <b-form action="https://submit-form.com/0a33497e-f1a4-4b04-86f8-295c7f5899de" @reset="resetForm">
                     <b-form-checkbox id="honeypot" name="_honeypot" autocomplete="off" tabindex="-1" style="display: none;"></b-form-checkbox>
-                    <input id="redirect" type="hidden" name="_redirect" value="https://benseager.co.uk/thanks" />
+                    <input id="redirect" type="hidden" name="_redirect" value="https://benseager.co.uk/#/thanks" />
                     <b-form-group id="name-group" label="Name" label-for="name">
                         <b-form-input id="name" name="name" type="text" required v-model="form.name"></b-form-input>
                     </b-form-group>
