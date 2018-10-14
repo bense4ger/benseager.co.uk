@@ -1,3 +1,18 @@
 language: node_js
 node_js:
-  - "10.11.0"
+- 10.11.0
+cache:
+  directories:
+  - node_modules
+script: build
+deploy:
+  provider: s3
+  access_key_id: AKIAI5ZYDRB6YSG23SHQ
+  secret_access_key:
+    secure: 2POl9MYiHTkCVlVtXKQwKP2hjKzszkFIEnrzub1za86BCHAoazz0GBRDqnLDAuTFfxWPXCG26c71pbIF5e543QP74hypK1FkzHkHx4Nl2z1Jd7+yCVD0jGrz0c6akj9uxHL1FAvj5GhvvfMtk5MyRex8h4QAPGLxFKWIgoq8rjAUF8Fm25M7W0FEuam0pSOby5SsDDdcgxWu9IubPykh3+anNvaCoXx+Qi4sQa/0pTmQBWBxRJzcjPPu0O0CHSgvZ/BXir44cJTjLw7DlZ8KZ3h70t//D7SkyNyHHwDysT6G0D5AuBHXQwWp5fcWTUpGZgcciImHyhtinilQTApEckWYKpdi1CQ2uO7kVnB7kK/FSqrTuFzrd1wHLr0FEYmErz41WfMWfe2ik26blXwh2utnLZ0y49Ziyd4PWrC5sCJJNdBTSvig+Y303u46N1XoHz5W7P+pwTUuu2P1fhJv+KqC4VQhUa6eyiJHNA34y/kXrPWe+y2Oqh93SUzkP1tUt9nIg/FRgrNesMjMYOulvpk64iT8Hl1kP8wEAD2/Ldhlv3Vy/uAcL2m02tEpYC5/NE0QYisAkaLOQmlCVrmG7T/rrI+V2LaBkwODg2sh9S3MOZaIq+nRWdV1+3y/yO9Ch728YX/G0U03GwGSdtGc7QHU0q/WOZRMFwRvNLk2YjE=
+  bucket: benseager.co.uk
+  local-dir: dist
+  acl: public_read
+  skip_cleanup: true
+  on:
+    repo: bense4ger/benseager.co.uk
