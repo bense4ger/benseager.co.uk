@@ -1,4 +1,5 @@
 <template>
+    <!-- eslint-disable -->
     <div id="contact" class="container">
         <div class="row">
             <div class="col-sm">
