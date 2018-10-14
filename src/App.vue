@@ -4,6 +4,7 @@
       <heading :page-title="pageTitle"></heading>
       <site-menu></site-menu>
       <router-view/>
+      <foot></foot>
     </div>
   </div>
 </template>
@@ -11,6 +12,7 @@
 <script>
   import Heading from '@/components/Heading.vue';
   import Menu from '@/components/Menu.vue';
+  import Foot from '@/components/Foot.vue';
 
   export default {
     name: 'app',
@@ -22,6 +24,7 @@
     components: {
       heading: Heading,
       siteMenu: Menu,
+      foot: Foot,
     },
   };
 </script>
