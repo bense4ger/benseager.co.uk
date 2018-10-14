@@ -1,31 +1,5 @@
-# bense4ger.github.io
+# benseager.co.uk
 
-## Project setup
-```
-npm install
-```
+[![Build Status](https://travis-ci.org/bense4ger/benseager.co.uk.svg?branch=master)](https://travis-ci.org/bense4ger/benseager.co.uk)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
+This is the repo for my personal site.
