@@ -1,9 +1,6 @@
 language: node_js
 node_js:
 - 10.11.0
-cache:
-  directories:
-  - node_modules
 deploy:
   provider: s3
   access_key_id: AKIAI5ZYDRB6YSG23SHQ
