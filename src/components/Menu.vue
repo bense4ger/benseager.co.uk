@@ -7,6 +7,7 @@
                     <b-collapse is-nav id="nav-collapse">
                         <b-navbar-nav>
                             <b-nav-item to="/">Home</b-nav-item>
+                            <b-nav-item to="/contact">Contact</b-nav-item>
                         </b-navbar-nav>
                     </b-collapse>
                 </b-navbar>
@@ -32,11 +33,8 @@
                 li.nav-item {
                     display: block;
                     a.nav-link {
-                        &.active {
-                            color: $primary-2 !important;
-                        }
-                        color: $secondary-1-1 !important;
                         font-weight: bold;
+                        color: $secondary-1-1 !important;
                     }
                 }
             }
