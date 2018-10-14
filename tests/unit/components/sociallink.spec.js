@@ -1,4 +1,4 @@
-import Vue from "vue";
+import Vue from 'vue';
 import { shallowMount } from '@vue/test-utils';
 import SocialLink from '@/components/SocialLink.vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
