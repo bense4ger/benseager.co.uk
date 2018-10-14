@@ -4,7 +4,9 @@ node_js:
 cache:
   directories:
   - node_modules
-script: build
+script:
+  - npm test
+  - npm run build
 deploy:
   provider: s3
   access_key_id: AKIAI5ZYDRB6YSG23SHQ
